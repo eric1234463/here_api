@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Oq9ywMvltxodjun0",
+    "database": "here",
+    "host": "35.200.253.198",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Oq9ywMvltxodjun0",
+    "database": "here",
+    "host": "135.200.253.198",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Oq9ywMvltxodjun0",
+    "database": "here",
+    "host": "35.200.253.198",
+    "dialect": "postgres"
+  }
+}

@@ -1,0 +1,29 @@
+version: '3'
+services:
+  here_database:
+    image: postgres:10.1
+    volumes:
+      - db_data:/var/lib/postgres
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: here
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: password
+  here_api:
+    image: node:9.3.0
+    depends_on:
+      - here_database
+    volumes:
+      - "./:/var/www/app"
+    working_dir: /var/www/app
+    environment:
+      DB_HOST: here_database:5432
+      DB_USER: sa
+      DB_PASSWORD: P@33word
+    command: "npm start"
+    ports:
+      - "3002:3002"
+volumes:
+    db_data:
