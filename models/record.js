@@ -24,6 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   Record.associate = function(models) {
     Record.belongsTo(models.Doctor, {foreignKey: 'doctorId'});
     Record.belongsTo(models.Patient, {foreignKey: 'patientId'});
+    Record.hasMany(models.RecordFactor, {foreignKey: 'recordId'});
+    Record.hasMany(models.RecordMedicine, {foreignKey: 'recordId'});
   };
   return Record;
 };

@@ -33,8 +33,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-var port = 80;
 
-app.listen(port);
+app.listen(8080);
 
 module.exports = app;

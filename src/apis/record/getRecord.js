@@ -8,8 +8,10 @@ export default function getRecord(req, res, next) {
                 id: req.params.id
             },
             include: [
-                { model: models.Doctor},
-                { model: models.Patient}
+                { model: models.Doctor },
+                { model: models.Patient },
+                { model: models.RecordFactor, include: models.Factor },
+                { model: models.RecordMedicine, include: models.Medicine }
             ]
         }).then(records=>{
             res.json(records);

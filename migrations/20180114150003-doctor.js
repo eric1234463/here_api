@@ -5,6 +5,7 @@ module.exports = {
     return queryInterface.createTable('doctor', {
       id: { type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true },
       uid: { type: Sequelize.STRING, allowNull: true },
+      displayName: { type: Sequelize.STRING, allowNull: true },
       photoURL: { type: Sequelize.STRING, allowNull: true },
       location: { type: Sequelize.STRING, allowNull: true },
       google_lat: { type: Sequelize.DECIMAL, allowNull: true },
