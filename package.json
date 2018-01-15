@@ -6,7 +6,7 @@
     "dev": "nodemon src/app.js --exec babel-node --presets env",
     "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
     "clean": "rimraf dist",
-    "start": "npm run build & node dist/app.js"
+    "start": "node dist/app.js"
   },
   "engines": {
     "node": ">=9.0.0"
