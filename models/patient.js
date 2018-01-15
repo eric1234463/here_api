@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
             uid: { type: DataTypes.STRING, allowNull: false },
             displayName: { type: DataTypes.STRING(16), allowNull: true },
+            hkid: { type: DataTypes.STRING, allowNull: true },
             photoURL: { type: DataTypes.STRING(16), allowNull: true },
             weight: { type: DataTypes.INTEGER, allowNull: true },
             height: { type: DataTypes.INTEGER, allowNull: true },
