@@ -8,4 +8,4 @@ recordRouter.get('/', getRecords);
 recordRouter.get('/:id', getRecord);
 recordRouter.post('/', createRecord);
 
-module.exports = recordRouter;
+export default recordRouter;

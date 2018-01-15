@@ -1,5 +1,9 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -23,5 +27,5 @@ recordRouter.get('/', _getRecords2.default);
 recordRouter.get('/:id', _getRecord2.default);
 recordRouter.post('/', _createRecord2.default);
 
-module.exports = recordRouter;
+exports.default = recordRouter;
 //# sourceMappingURL=router.js.map

@@ -9,8 +9,18 @@ module.exports = {
         allowNull: false,
         references: { model: 'doctor', key: 'id' }
       },
-      content: { type: Sequelize.STRING(255), allowNull: false },
-      photoURL: { type: Sequelize.STRING(255), allowNull: true },
+      photoURL: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      title: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      content: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

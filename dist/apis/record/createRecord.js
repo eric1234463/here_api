@@ -15,7 +15,7 @@ function createRecord(req, res, next) {
     _models2.default.Record.create({
         desctiption: 'Hello World',
         doctorId: 1,
-        patientId: 5,
+        patientId: 1,
         rate: 4
     }).then(function (record) {
         res.json(record);
