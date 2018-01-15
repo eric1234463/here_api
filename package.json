@@ -3,9 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js --exec babel-node --presets env"
+    "dev": "babel-node app.js --exec babel-node --presets env",
+    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "clean": "rimraf dist",
+    "start": "npm run build && node dist/app.js"
+  },
+  "engines": {
+    "node": ">=9.0.0"
   },
   "dependencies": {
+    "@google-cloud/storage": "^1.5.2",
+    "babel-cli": "^6.26.0",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
@@ -15,11 +23,9 @@
     "morgan": "~1.9.0",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
+    "rimraf": "^2.6.2",
     "sequelize": "^4.31.1",
-    "serve-favicon": "~2.4.5"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "serve-favicon": "~2.4.5",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.13.0",
     "eslint-plugin-prettier": "^2.3.1",
