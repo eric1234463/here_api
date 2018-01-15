@@ -2,9 +2,14 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    queryInterface.addColumn('patient', 'hkid', Sequelize.STRING, {
-      after: 'photoURL'
-    });
+    return [
+      queryInterface.addColumn('patient', 'hkid', Sequelize.STRING, {
+        after: 'photoURL'
+      }),
+      queryInterface.addColumn('patient', 'gender', Sequelize.STRING(1), {
+        after: 'photoURL'
+      })
+    ]
   },
 
   down: (queryInterface, Sequelize) => {
@@ -15,6 +20,9 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    queryInterface.removeColumn('patient', 'hkid');
+    return [
+      queryInterface.removeColumn('patient', 'hkid'),
+      queryInterface.removeColumn('patient', 'gender')
+    ]
   }
 };
