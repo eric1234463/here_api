@@ -51,6 +51,7 @@ io.on('connection', (socket) => {
     });
   });
   socket.on('cancel connection', function (data) {
+    console.log('cancel connection', data);
     socket.broadcast.to(data.room).emit('cancel doctor', {
       patient: data.patient
     });
