@@ -1,13 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import http from 'http';
+import SocketIO from 'socket.io';
+let apiHandlers = require('./apis');
+let app = express();
+let server = http.Server(app);
+let io = new SocketIO(server);
 
-var apiHandlers = require('./apis');
-
-var app = express();
+let port = process.env.PORT || 8080;
 
 // view engine setup
 app.use(cors());
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -17,14 +22,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', apiHandlers);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -34,8 +38,22 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const port = process.env.PORT || 8080;
 
-app.listen(port);
+io.on('connection', (socket) => {
+  socket.on('subscribe', function (room) {
+    console.log('joining room', room);
+    socket.join(room);
+  });
 
-module.exports = app;
+  socket.on('send message', function (data) {
+    console.log('sending room post', data.room);
+    socket.broadcast.to(data.room).emit('conversation private post', {
+      patient: data.patient
+    });
+  });
+});
+
+server.listen(port, function () {
+  console.log('listening on *:' + port);
+});
+module.exports = { app: app, server: server };

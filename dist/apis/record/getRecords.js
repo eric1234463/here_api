@@ -16,7 +16,7 @@ function getRecords(req, res, next) {
         where: {
             patientId: req.query.userId
         },
-        include: [{ model: _models2.default.Doctor }, { model: _models2.default.Patient }]
+        include: [{ model: _models2.default.Doctor }, { model: _models2.default.Patient }, { model: _models2.default.RecordFactor, include: _models2.default.Factor }, { model: _models2.default.RecordMedicine, include: _models2.default.Medicine }]
     }).then(function (records) {
         res.json(records);
     });
