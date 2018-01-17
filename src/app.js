@@ -46,12 +46,12 @@ io.on('connection', (socket) => {
   });
 
   socket.on('connect doctor', function (data) {
-    socket.broadcast.to(data.room).emit('connection', {
+    socket.broadcast.to(data.room).emit('connect doctor', {
       patient: data.patient
     });
   });
   socket.on('cancel connection', function (data) {
-    socket.broadcast.to(data.room).emit('connection', {
+    socket.broadcast.to(data.room).emit('cancel doctor', {
       patient: data.patient
     });
   });
