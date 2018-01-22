@@ -14,18 +14,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function createBiologicalClock(req, res, next) {
     if (req.body.type == 'SLEEP') {
         _models2.default.patientBiologicalClock.findOrCreate({
-            type: req.body.type,
-            patientId: req.body.patientId,
-            date: req.body.date
+            where: {
+                type: req.body.type,
+                patientId: req.body.patientId,
+                date: req.body.date
+            }
         }).spread(function (clock, created) {
             res.json({ status: created });
         });
     } else {
         _models2.default.patientBiologicalClock.findOrCreate({
-            type: req.body.type,
-            patientId: req.body.patientId,
-            date: req.body.date,
-            createdAt: req.body.date
+            where: {
+                type: req.body.type,
+                patientId: req.body.patientId,
+                date: req.body.date,
+                createdAt: req.body.date
+            }
         }).spread(function (clock, created) {
             res.json({ status: created });
         });
