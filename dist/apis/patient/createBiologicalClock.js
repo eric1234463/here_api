@@ -30,6 +30,8 @@ function createBiologicalClock(req, res, next) {
                 date: req.body.date,
                 createdAt: req.body.date
             }
+        }, {
+            forceTimestamps: true
         }).spread(function (clock, created) {
             res.json({ status: created });
         });

@@ -24,11 +24,7 @@ export default function createBiologicalClock(req, res, next) {
             }, {
                 forceTimestamps: true
             }).spread((clock, created) => {
-
-                forceTimestamps: true
+                res.json({ status: created });
             });
-    }
-    res.json({ status: created });
-});
     }
 }
