@@ -11,11 +11,11 @@ export default function getBiologicalClock(req, res, next) {
                     patientId: req.query.patientId,
                     date: req.query.date
                 }
-            }).then(clock=>{
-                if(clock != undefined) {
+            }).then(clock => {
+                if (clock != undefined) {
                     status = true
                 }
-                res.json(status);
+                res.json({ status });
             })
     } else {
         models.patientBiologicalClock

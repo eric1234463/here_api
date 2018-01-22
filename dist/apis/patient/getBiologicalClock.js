@@ -32,7 +32,7 @@ function getBiologicalClock(req, res, next) {
             if (clock != undefined) {
                 status = true;
             }
-            res.json(status);
+            res.json({ status: status });
         });
     } else {
         _models2.default.patientBiologicalClock.findAll({
