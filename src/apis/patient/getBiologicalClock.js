@@ -16,20 +16,20 @@ export default function getBiologicalClock(req, res, next) {
                 if (collectionElement.type == 'SLEEP') {
                     const time = moment(collectionElement.createdAt);
                     const remainder = 30 - time.minute() % 30;
-                    const roundUpTime = moment(time).add("minutes", remainder );
+                    const roundUpTime = moment(time).add("minutes", remainder).hours();
                     arr.push(roundUpTime);
                 }
                 return arr;
-            },[])
+            }, [])
             const wakeData = jsonData.reduce((arr, collectionElement) => {
                 if (collectionElement.type == 'WAKE') {
                     const time = moment(collectionElement.createdAt);
                     const remainder = 30 - time.minute() % 30;
-                    const roundUpTime = moment(time).add("minutes", remainder );
+                    const roundUpTime = moment(time).add("minutes", remainder).hours();;
                     arr.push(roundUpTime);
                 }
                 return arr;
-            },[])
+            }, [])
 
             const result = [{
                 label: 'SLEEP',
