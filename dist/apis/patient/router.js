@@ -16,10 +16,15 @@ var _getBiologicalClock = require('./getBiologicalClock');
 
 var _getBiologicalClock2 = _interopRequireDefault(_getBiologicalClock);
 
+var _updateProfile = require('./updateProfile');
+
+var _updateProfile2 = _interopRequireDefault(_updateProfile);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var patientRouter = _express2.default.Router();
 
+patientRouter.put('/', _updateProfile2.default);
 patientRouter.post('/login', _patientLogin2.default);
 patientRouter.post('/biologicalClock', _createBiologicalClock2.default);
 patientRouter.get('/biologicalClock', _getBiologicalClock2.default);
