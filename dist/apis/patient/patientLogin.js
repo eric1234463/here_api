@@ -14,7 +14,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function patientLogin(req, res, next) {
     _models2.default.Patient.findOrCreate({
         where: {
-            uid: req.body.uid
+            uid: req.body.uid,
+            email: req.body.email
         }
     }).spread(function (user, created) {
         if (created == true) {
