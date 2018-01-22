@@ -15,9 +15,11 @@ function createBiologicalClock(req, res, next) {
     _models2.default.patientBiologicalClock.findOrCreate({
         where: {
             type: req.body.type,
+            patientId: req.body.patientId,
             createAt: req.body.date
         },
         defaults: {
+            patientId: req.body.patientId,
             type: req.body.type,
             createAt: req.body.date
         }
