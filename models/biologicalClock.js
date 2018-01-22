@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         'patientBiologicalClock',
         {
             id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
-            type: { type: DataTypes.TEXT, allowNull: true },
+            type: { type: DataTypes.TEXT, allowNull: false },
             patientId: { type: DataTypes.BIGINT, allowNull: false }
         },
         {

@@ -6,7 +6,7 @@ export default function createBiologicalClock(req, res, next) {
         .create({
             type: req.body.type,
             patientId: req.body.patientId,
-        }).spread((date, created) => {
+        }).then((date) => {
             res.json(date);
         });
 }

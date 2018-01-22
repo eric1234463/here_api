@@ -13,15 +13,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function createBiologicalClock(req, res, next) {
     _models2.default.patientBiologicalClock.create({
-        where: {
-            type: req.body.type,
-            patientId: req.body.patientId
-        },
-        defaults: {
-            patientId: req.body.patientId,
-            type: req.body.type
-        }
-    }).spread(function (date, created) {
+        type: req.body.type,
+        patientId: req.body.patientId
+    }).then(function (date) {
         res.json(date);
     });
 }
