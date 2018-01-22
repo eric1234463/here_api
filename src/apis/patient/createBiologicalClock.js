@@ -1,6 +1,5 @@
 import models from '../../../models';
 
-
 export default function createBiologicalClock(req, res, next) {
     if (req.body.type == 'SLEEP') {
         models.patientBiologicalClock
@@ -22,8 +21,14 @@ export default function createBiologicalClock(req, res, next) {
                     date: req.body.date,
                     createdAt: req.body.date
                 }
+            }, {
+                forceTimestamps: true
             }).spread((clock, created) => {
-                res.json({ status: created });
+
+                forceTimestamps: true
             });
+    }
+    res.json({ status: created });
+});
     }
 }
