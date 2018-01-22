@@ -1,11 +1,12 @@
 import models from '../../../models';
 
 
-export default function doctorLogin(req, res, next) {
-    models.Doctor
+export default function patientLogin(req, res, next) {
+    models.Patient
         .findOrCreate({
             where: {
-                uid: req.body.uid
+                uid: req.body.uid,
+                email:req.body.email
             }
         }).spread((user, created) => {
             if (created == true) {
