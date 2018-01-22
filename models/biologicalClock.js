@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             patientId: { type: DataTypes.BIGINT, allowNull: false },
             createdAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: DataTypes.DATE
             },
         },
         {
