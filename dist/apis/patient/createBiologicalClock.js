@@ -15,13 +15,11 @@ function createBiologicalClock(req, res, next) {
     _models2.default.patientBiologicalClock.findOrCreate({
         where: {
             type: req.body.type,
-            patientId: req.body.patientId,
-            createAt: req.body.date
+            patientId: req.body.patientId
         },
         defaults: {
             patientId: req.body.patientId,
-            type: req.body.type,
-            createAt: req.body.date
+            type: req.body.type
         }
     }).spread(function (date, created) {
         res.json(date);
