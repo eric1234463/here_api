@@ -11,7 +11,7 @@ var _patientLogin2 = _interopRequireDefault(_patientLogin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var patientRouter = _express2.default.Router();
-patientRouter.post('/login', doctorLogin);
+patientRouter.post('/login', _patientLogin2.default);
 
 module.exports = patientRouter;
 //# sourceMappingURL=router.js.map
