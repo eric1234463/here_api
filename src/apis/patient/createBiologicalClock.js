@@ -1,7 +1,7 @@
 import models from '../../../models';
 
 export default function createBiologicalClock(req, res, next) {
-    if (req.body.type == 'SLEEP') {
+    if (req.body.type == 'WAKE') {
         models.patientBiologicalClock
             .findOrCreate({
                 where: {
@@ -19,6 +19,8 @@ export default function createBiologicalClock(req, res, next) {
                     type: req.body.type,
                     patientId: req.body.patientId,
                     date: req.body.date,
+                },
+                defaults: {
                     createdAt: req.body.date
                 }
             }, {
