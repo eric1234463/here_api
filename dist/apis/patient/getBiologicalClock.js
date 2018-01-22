@@ -14,9 +14,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function getBiologicalClock(req, res, next) {
     _models2.default.patientBiologicalClock.findAll({
         where: {
-            patientId: req.body.patientId
+            patientId: req.query.patientId
         },
-        between: [req.body.from, req.body.to]
+        between: [req.query.from, req.query.to]
     }).then(function (dates) {
         res.json(dates);
     });

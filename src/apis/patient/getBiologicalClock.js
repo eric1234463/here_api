@@ -5,9 +5,9 @@ export default function getBiologicalClock(req, res, next) {
     models.patientBiologicalClock
         .findAll({
             where: {
-                patientId: req.body.patientId,
+                patientId: req.query.patientId,
             },
-            between: [req.body.from, req.body.to]
+            between: [req.query.from, req.query.to]
         }).then((dates) => {
             res.json(dates);
         });
