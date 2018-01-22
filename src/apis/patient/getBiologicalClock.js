@@ -5,14 +5,14 @@ export default function getBiologicalClock(req, res, next) {
     if (req.query.type != undefined) {
         let status = false;
         models.patientBiologicalClock
-            .find({
+            .count({
                 where: {
                     type: req.query.type,
                     patientId: req.query.patientId,
                     date: req.query.date
                 }
             }).then(clock => {
-                if (clock != undefined) {
+                if (clock != 0) {
                     status = true
                 }
                 res.json({ status });

@@ -22,14 +22,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function getBiologicalClock(req, res, next) {
     if (req.query.type != undefined) {
         var status = false;
-        _models2.default.patientBiologicalClock.find({
+        _models2.default.patientBiologicalClock.count({
             where: {
                 type: req.query.type,
                 patientId: req.query.patientId,
                 date: req.query.date
             }
         }).then(function (clock) {
-            if (clock != undefined) {
+            if (clock != 0) {
                 status = true;
             }
             res.json({ status: status });
