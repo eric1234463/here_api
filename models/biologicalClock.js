@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
             type: { type: DataTypes.TEXT, allowNull: true },
             patientId: { type: DataTypes.BIGINT, allowNull: false },
+            createdAt: {
+                allowNull: false,
+                type: Sequelize.DATE
+            },
         },
         {
             tableName: 'patient_biological_clock'
