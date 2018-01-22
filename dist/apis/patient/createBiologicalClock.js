@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function createBiologicalClock(req, res, next) {
     if (req.body.type == 'SLEEP') {
-        _models2.default.patientBiologicalClock.create({
+        _models2.default.patientBiologicalClock.findOrCreate({
             type: req.body.type,
             patientId: req.body.patientId,
             date: req.body.date
@@ -21,7 +21,7 @@ function createBiologicalClock(req, res, next) {
             res.json({ status: created });
         });
     } else {
-        _models2.default.patientBiologicalClock.create({
+        _models2.default.patientBiologicalClock.findOrCreate({
             type: req.body.type,
             patientId: req.body.patientId,
             date: req.body.date,
