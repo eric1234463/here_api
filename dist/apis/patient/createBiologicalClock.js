@@ -28,13 +28,13 @@ function createBiologicalClock(req, res, next) {
                 type: req.body.type,
                 patientId: req.body.patientId,
                 date: req.body.date
-            },
-            defaults: {
-                createdAt: req.body.date
             }
-        }, {
-            forceTimestamps: true
         }).spread(function (clock, created) {
+            if (created) {
+                clock.update({
+                    createdAt: req.body.date
+                });
+            }
             res.json({ status: created });
         });
     }
