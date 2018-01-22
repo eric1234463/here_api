@@ -15,7 +15,7 @@ function createBiologicalClock(req, res, next) {
     _models2.default.patientBiologicalClock.findOrCreate({
         type: req.body.type,
         patientId: req.body.patientId,
-        createdAt: req.body.date
+        date: req.body.date
     }).spread(function (clock, created) {
         res.json(created);
     });
