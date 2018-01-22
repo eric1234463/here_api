@@ -19,6 +19,7 @@ var _getBiologicalClock2 = _interopRequireDefault(_getBiologicalClock);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var patientRouter = _express2.default.Router();
+
 patientRouter.post('/login', _patientLogin2.default);
 patientRouter.post('/biologicalClock', _createBiologicalClock2.default);
 patientRouter.get('/biologicalClock', _getBiologicalClock2.default);

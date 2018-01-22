@@ -13,11 +13,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function createBiologicalClock(req, res, next) {
     _models2.default.patientBiologicalClock.findOrCreate({
-        type: req.body.type,
-        patientId: req.body.patientId,
-        date: req.body.date
+        where: {
+            type: req.body.type,
+            patientId: req.body.patientId,
+            date: req.body.date
+        }
     }).spread(function (clock, created) {
-        res.json(created);
+        res.json({ status: created });
     });
 }
 //# sourceMappingURL=createBiologicalClock.js.map
