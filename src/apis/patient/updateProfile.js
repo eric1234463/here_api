@@ -3,13 +3,13 @@ import models from '../../../models';
 export default function updateProfile(req, res, next) {
     models.Patient.update(
         {
-            hkid: res.body.hkid,
-            weight: res.body.weight,
-            height: res.body.height,
-            gender: res.body.gender,
+            hkid: req.body.hkid,
+            weight: req.body.weight,
+            height: req.body.height,
+            gender: req.body.gender,
         }, {
             where: {
-                id: res.body.patientId
+                id: req.body.patientId
             }
         }).then(model => {
             res.json(model);

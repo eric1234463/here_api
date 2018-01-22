@@ -13,13 +13,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function updateProfile(req, res, next) {
     _models2.default.Patient.update({
-        hkid: res.body.hkid,
-        weight: res.body.weight,
-        height: res.body.height,
-        gender: res.body.gender
+        hkid: req.body.hkid,
+        weight: req.body.weight,
+        height: req.body.height,
+        gender: req.body.gender
     }, {
         where: {
-            id: res.body.patientId
+            id: req.body.patientId
         }
     }).then(function (model) {
         res.json(model);
