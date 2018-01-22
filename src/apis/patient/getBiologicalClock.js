@@ -12,13 +12,13 @@ export default function getBiologicalClock(req, res, next) {
             },
         }).then((dates) => {
             const jsonData = _.map(dates, 'dataValues');
-            const sleepData = _.map(jsonData, (obj) => {
+            const sleepData = _.filter(jsonData, (obj) => {
                 if (obj.type == 'SLEEP') {
                     const time = moment(obj.createdAt).format('h:mm');
                     return time;
                 }
             });
-            const wakeData = _.map(jsonData, (obj) => {
+            const wakeData = _.filter(jsonData, (obj) => {
                 if (obj.type === 'WAKE') {
                     const time = moment(obj.createdAt).format('h:mm');
                     return time;

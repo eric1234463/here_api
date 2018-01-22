@@ -29,13 +29,13 @@ function getBiologicalClock(req, res, next) {
         }
     }).then(function (dates) {
         var jsonData = _lodash2.default.map(dates, 'dataValues');
-        var sleepData = _lodash2.default.map(jsonData, function (obj) {
+        var sleepData = _lodash2.default.filter(jsonData, function (obj) {
             if (obj.type == 'SLEEP') {
                 var time = (0, _moment2.default)(obj.createdAt).format('h:mm');
                 return time;
             }
         });
-        var wakeData = _lodash2.default.map(jsonData, function (obj) {
+        var wakeData = _lodash2.default.filter(jsonData, function (obj) {
             if (obj.type === 'WAKE') {
                 var time = (0, _moment2.default)(obj.createdAt).format('h:mm');
                 return time;
