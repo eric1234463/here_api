@@ -16,7 +16,7 @@ export default function getBiologicalClock(req, res, next) {
                 if (collectionElement.type == 'SLEEP') {
                     const time = moment(collectionElement.createdAt);
                     const remainder = 30 - time.minute() % 30;
-                    const roundUpTime = moment(time).add("minutes", remainder ).format("h:mm");
+                    const roundUpTime = moment(time).add("minutes", remainder );
                     arr.push(roundUpTime);
                 }
                 return arr;
@@ -25,7 +25,7 @@ export default function getBiologicalClock(req, res, next) {
                 if (collectionElement.type == 'WAKE') {
                     const time = moment(collectionElement.createdAt);
                     const remainder = 30 - time.minute() % 30;
-                    const roundUpTime = moment(time).add("minutes", remainder ).format("h:mm");
+                    const roundUpTime = moment(time).add("minutes", remainder );
                     arr.push(roundUpTime);
                 }
                 return arr;
