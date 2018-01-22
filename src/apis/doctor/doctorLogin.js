@@ -6,15 +6,15 @@ export default function doctorLogin(req, res, next) {
         .findOrCreate({
             where: {
                 uid: req.body.uid,
-                email:req.body.email
+                email: req.body.email
+            },
+            defaults: {
+                uid: req.body.uid,
+                email: req.body.email,
+                displayName: req.body.displayName,
+                photoURL: req.body.photoURL,
             }
         }).spread((user, created) => {
-            if (created == true) {
-                user.update({
-                    displayName: req.body.displayName,
-                    photoURL: req.body.photoURL,
-                });
-            } 
             res.json(user);
         });
 }
