@@ -12,19 +12,25 @@ export default function getBiologicalClock(req, res, next) {
             },
         }).then((dates) => {
             const jsonData = _.map(dates, 'dataValues');
-            const sleepData = _.filter(jsonData, (obj) => {
-                if (obj.type == 'SLEEP') {
-                    const time = moment(obj.createdAt).format('h:mm');
-                    return time;
+            const sleepData = jsonData.reduce((arr, collectionElement) => {
+                if (collectionElement.type == 'SLEEP') {
+                    const time = moment(collectionElement.createdAt);
+                    const remainder = 30 - time.minute() % 30;
+                    const roundUpTime = moment(time).add("minutes", remainder ).format("h:mm");
+                    arr.push(roundUpTime);
                 }
-            });
-            const wakeData = _.filter(jsonData, (obj) => {
-                if (obj.type === 'WAKE') {
-                    const time = moment(obj.createdAt).format('h:mm');
-                    return time;
+                return arr;
+            },[])
+            const wakeData = jsonData.reduce((arr, collectionElement) => {
+                if (collectionElement.type == 'WAKE') {
+                    const time = moment(collectionElement.createdAt);
+                    const remainder = 30 - time.minute() % 30;
+                    const roundUpTime = moment(time).add("minutes", remainder ).format("h:mm");
+                    arr.push(roundUpTime);
                 }
-            });
-            console.log(wakeData);
+                return arr;
+            },[])
+
             const result = [{
                 label: 'SLEEP',
                 data: sleepData
