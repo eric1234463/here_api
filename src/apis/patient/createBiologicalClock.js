@@ -3,10 +3,11 @@ import models from '../../../models';
 
 export default function createBiologicalClock(req, res, next) {
     models.patientBiologicalClock
-        .create({
+        .findOrCreate({
             type: req.body.type,
             patientId: req.body.patientId,
-        }).then((date) => {
-            res.json(date);
+            createdAt: req.body.date,
+        }).spread((clock, created) => {
+            res.json(created);
         });
 }

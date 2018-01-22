@@ -12,11 +12,12 @@ var _models2 = _interopRequireDefault(_models);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function createBiologicalClock(req, res, next) {
-    _models2.default.patientBiologicalClock.create({
+    _models2.default.patientBiologicalClock.findOrCreate({
         type: req.body.type,
-        patientId: req.body.patientId
-    }).then(function (date) {
-        res.json(date);
+        patientId: req.body.patientId,
+        createdAt: req.body.date
+    }).spread(function (clock, created) {
+        res.json(created);
     });
 }
 //# sourceMappingURL=createBiologicalClock.js.map
