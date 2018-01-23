@@ -1,6 +1,6 @@
 import models from '../../../models';
 import _ from 'lodash';
-import moment from 'moment';
+import moment from 'moment-timezone';
 export default function getBiologicalClock(req, res, next) {
     if (req.query.type != undefined) {
         let status = false;
@@ -32,7 +32,7 @@ export default function getBiologicalClock(req, res, next) {
                     if (collectionElement.type == 'SLEEP') {
                         const time = moment(collectionElement.createdAt);
                         const remainder = 30 - time.minute() % 30;
-                        const roundUpTime = moment(time).add("minutes", remainder).hours();
+                        const roundUpTime = moment(time).add("minutes", remainder).hours().tz("Asia/Hong_Kong").format();
                         arr.push(roundUpTime);
                     }
                     return arr;
@@ -41,7 +41,7 @@ export default function getBiologicalClock(req, res, next) {
                     if (collectionElement.type == 'WAKE') {
                         const time = moment(collectionElement.createdAt);
                         const remainder = 30 - time.minute() % 30;
-                        const roundUpTime = moment(time).add("minutes", remainder).hours();;
+                        const roundUpTime = moment(time).add("minutes", remainder).hours().tz("Asia/Hong_Kong").format();
                         arr.push(roundUpTime);
                     }
                     return arr;
