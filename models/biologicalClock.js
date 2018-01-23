@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             type: { type: DataTypes.TEXT, allowNull: false },
             patientId: { type: DataTypes.BIGINT, allowNull: false },
             date: { type: DataTypes.DATEONLY, allowNull: false },
+            dateTime: { type: DataTypes.DATE, allowNull: false },
             createdAt: {
                 allowNull: false,
                 type: DataTypes.DATE
