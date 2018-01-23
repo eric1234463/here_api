@@ -4,6 +4,8 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return [
       queryInterface.addColumn('patient_biological_clock', 'date', Sequelize.DATEONLY),
+      queryInterface.addColumn('patient_biological_clock', 'dateTime', Sequelize.DATE),
+
     ]
   },
 
@@ -17,6 +19,7 @@ module.exports = {
     */
     return [
       queryInterface.removeColumn('patient_biological_clock', 'date'),
+      queryInterface.removeColumn('patient_biological_clock', 'dateTime')
     ]
   }
 };
