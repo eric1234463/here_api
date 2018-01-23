@@ -46,18 +46,18 @@ function getBiologicalClock(req, res, next) {
             var jsonData = _lodash2.default.map(dates, 'dataValues');
             var sleepData = jsonData.reduce(function (arr, collectionElement) {
                 if (collectionElement.type == 'SLEEP') {
-                    var time = (0, _momentTimezone2.default)(collectionElement.createdAt);
+                    var time = (0, _momentTimezone2.default)(collectionElement.createdAt).tz("Asia/Hong_Kong");
                     var remainder = 30 - time.minute() % 30;
-                    var roundUpTime = (0, _momentTimezone2.default)(time).add("minutes", remainder).hours().tz("Asia/Hong_Kong").format();
+                    var roundUpTime = (0, _momentTimezone2.default)(time).add("minutes", remainder).hours();
                     arr.push(roundUpTime);
                 }
                 return arr;
             }, []);
             var wakeData = jsonData.reduce(function (arr, collectionElement) {
                 if (collectionElement.type == 'WAKE') {
-                    var time = (0, _momentTimezone2.default)(collectionElement.createdAt);
+                    var time = (0, _momentTimezone2.default)(collectionElement.createdAt).tz("Asia/Hong_Kong");
                     var remainder = 30 - time.minute() % 30;
-                    var roundUpTime = (0, _momentTimezone2.default)(time).add("minutes", remainder).hours().tz("Asia/Hong_Kong").format();
+                    var roundUpTime = (0, _momentTimezone2.default)(time).add("minutes", remainder).hours();
                     arr.push(roundUpTime);
                 }
                 return arr;

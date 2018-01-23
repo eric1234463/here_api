@@ -30,18 +30,18 @@ export default function getBiologicalClock(req, res, next) {
                 const jsonData = _.map(dates, 'dataValues');
                 const sleepData = jsonData.reduce((arr, collectionElement) => {
                     if (collectionElement.type == 'SLEEP') {
-                        const time = moment(collectionElement.createdAt);
+                        const time = moment(collectionElement.createdAt).tz("Asia/Hong_Kong");
                         const remainder = 30 - time.minute() % 30;
-                        const roundUpTime = moment(time).add("minutes", remainder).hours().tz("Asia/Hong_Kong").format();
+                        const roundUpTime = moment(time).add("minutes", remainder).hours();
                         arr.push(roundUpTime);
                     }
                     return arr;
                 }, [])
                 const wakeData = jsonData.reduce((arr, collectionElement) => {
                     if (collectionElement.type == 'WAKE') {
-                        const time = moment(collectionElement.createdAt);
+                        const time = moment(collectionElement.createdAt).tz("Asia/Hong_Kong");
                         const remainder = 30 - time.minute() % 30;
-                        const roundUpTime = moment(time).add("minutes", remainder).hours().tz("Asia/Hong_Kong").format();
+                        const roundUpTime = moment(time).add("minutes", remainder).hours();
                         arr.push(roundUpTime);
                     }
                     return arr;
