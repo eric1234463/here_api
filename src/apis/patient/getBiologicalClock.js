@@ -28,31 +28,24 @@ export default function getBiologicalClock(req, res, next) {
                 },
             }).then((dates) => {
                 const jsonData = _.map(dates, 'dataValues');
-                const sleepData = jsonData.reduce((arr, collectionElement) => {
+                let current = req.query.from;
+                const dataArr = jsonData.reduce((arr, collectionElement) => {
+                    const time = moment(collectionElement.createdAt).tz("Asia/Hong_Kong");
+                    const remainder = 30 - time.minute() % 30;
+                    const roundUpTime = moment(time).add(remainder, "minutes").hours();
                     if (collectionElement.type == 'SLEEP') {
-                        const time = moment(collectionElement.createdAt).tz("Asia/Hong_Kong");
-                        const remainder = 30 - time.minute() % 30;
-                        const roundUpTime = moment(time).add("minutes", remainder).hours();
-                        arr.push(roundUpTime);
+                        arr.sleep.push(roundUpTime);
+                    } else {
+                        arr.wake.push(roundUpTime);
                     }
                     return arr;
-                }, [])
-                const wakeData = jsonData.reduce((arr, collectionElement) => {
-                    if (collectionElement.type == 'WAKE') {
-                        const time = moment(collectionElement.createdAt).tz("Asia/Hong_Kong");
-                        const remainder = 30 - time.minute() % 30;
-                        const roundUpTime = moment(time).add("minutes", remainder).hours();
-                        arr.push(roundUpTime);
-                    }
-                    return arr;
-                }, [])
-
+                }, { sleep: [], wake: [] });
                 const result = [{
                     label: 'SLEEP',
-                    data: sleepData
+                    data: dataArr.sleep
                 }, {
                     label: 'WAKE',
-                    data: wakeData
+                    data: dataArr.wake
                 }];
                 res.json(result);
             });
