@@ -35,6 +35,20 @@ function getBiologicalClock(req, res, next) {
             res.json({ status: status });
         });
     } else {
+        var dateArray = [];
+        var sleepArray = [];
+        var wakeArray = [];
+        var start = new Date(req.query.from);
+        var end = new Date(req.query.to);
+
+        while (start <= end) {
+            dateArray.push(start.getTime());
+            sleepArray.push(0);
+            wakeArray.push(0);
+            var newDate = start.setDate(start.getDate() + 1);
+            start = new Date(newDate);
+        }
+
         _models2.default.patientBiologicalClock.findAll({
             where: {
                 patientId: req.query.patientId,
@@ -44,31 +58,26 @@ function getBiologicalClock(req, res, next) {
             }
         }).then(function (dates) {
             var jsonData = _lodash2.default.map(dates, 'dataValues');
-            var sleepData = jsonData.reduce(function (arr, collectionElement) {
+            var dataArr = jsonData.forEach(function (collectionElement) {
+                var date = new Date(collectionElement.date).getTime();
+                var index = dateArray.findIndex(function (x) {
+                    return x == date;
+                });
+                var time = (0, _momentTimezone2.default)(collectionElement.dateTime).tz("Asia/Hong_Kong");
+                var remainder = 30 - time.minute() % 30;
+                var roundUpTime = (0, _momentTimezone2.default)(time).add(remainder, "minutes").hours();
                 if (collectionElement.type == 'SLEEP') {
-                    var time = (0, _momentTimezone2.default)(collectionElement.createdAt).tz("Asia/Hong_Kong");
-                    var remainder = 30 - time.minute() % 30;
-                    var roundUpTime = (0, _momentTimezone2.default)(time).add("minutes", remainder).hours();
-                    arr.push(roundUpTime);
+                    sleepArray[index] = roundUpTime;
+                } else {
+                    wakeArray[index] = roundUpTime;
                 }
-                return arr;
-            }, []);
-            var wakeData = jsonData.reduce(function (arr, collectionElement) {
-                if (collectionElement.type == 'WAKE') {
-                    var time = (0, _momentTimezone2.default)(collectionElement.createdAt).tz("Asia/Hong_Kong");
-                    var remainder = 30 - time.minute() % 30;
-                    var roundUpTime = (0, _momentTimezone2.default)(time).add("minutes", remainder).hours();
-                    arr.push(roundUpTime);
-                }
-                return arr;
-            }, []);
-
+            });
             var result = [{
                 label: 'SLEEP',
-                data: sleepData
+                data: sleepArray
             }, {
                 label: 'WAKE',
-                data: wakeData
+                data: wakeArray
             }];
             res.json(result);
         });

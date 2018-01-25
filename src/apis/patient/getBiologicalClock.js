@@ -18,6 +18,20 @@ export default function getBiologicalClock(req, res, next) {
                 res.json({ status });
             })
     } else {
+        let dateArray = [];
+        let sleepArray = [];
+        let wakeArray = [];
+        let start = new Date(req.query.from);
+        let end = new Date(req.query.to);
+
+        while (start <= end) {
+            dateArray.push(start.getTime());
+            sleepArray.push(0);
+            wakeArray.push(0);
+            let newDate = start.setDate(start.getDate() + 1);
+            start = new Date(newDate);
+        }
+
         models.patientBiologicalClock
             .findAll({
                 where: {
@@ -28,24 +42,24 @@ export default function getBiologicalClock(req, res, next) {
                 },
             }).then((dates) => {
                 const jsonData = _.map(dates, 'dataValues');
-                let current = req.query.from;
-                const dataArr = jsonData.reduce((arr, collectionElement) => {
-                    const time = moment(collectionElement.createdAt).tz("Asia/Hong_Kong");
+                const dataArr = jsonData.forEach(collectionElement => {
+                    let date = new Date(collectionElement.date).getTime();
+                    let index = dateArray.findIndex(x => x == date);
+                    const time = moment(collectionElement.dateTime).tz("Asia/Hong_Kong");
                     const remainder = 30 - time.minute() % 30;
                     const roundUpTime = moment(time).add(remainder, "minutes").hours();
                     if (collectionElement.type == 'SLEEP') {
-                        arr.sleep.push(roundUpTime);
+                        sleepArray[index] = roundUpTime;
                     } else {
-                        arr.wake.push(roundUpTime);
-                    }
-                    return arr;
-                }, { sleep: [], wake: [] });
+                        wakeArray[index] = roundUpTime;
+                    }   
+                });
                 const result = [{
                     label: 'SLEEP',
-                    data: dataArr.sleep
+                    data: sleepArray
                 }, {
                     label: 'WAKE',
-                    data: dataArr.wake
+                    data: wakeArray
                 }];
                 res.json(result);
             });
