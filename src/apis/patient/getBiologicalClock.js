@@ -36,7 +36,7 @@ export default function getBiologicalClock(req, res, next) {
             .findAll({
                 where: {
                     patientId: req.query.patientId,
-                    createdAt: {
+                    date: {
                         $between: [req.query.from, req.query.to]
                     }
                 },

@@ -52,7 +52,7 @@ function getBiologicalClock(req, res, next) {
         _models2.default.patientBiologicalClock.findAll({
             where: {
                 patientId: req.query.patientId,
-                createdAt: {
+                date: {
                     $between: [req.query.from, req.query.to]
                 }
             }
