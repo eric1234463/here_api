@@ -15,10 +15,10 @@ function doctorLocation(req, res, next) {
   _models2.default.Doctor.findAll({
     where: {
       google_lat: {
-        $in: [parseFloat(req.query.lat), parseFloat(req.query.lat) + 3]
+        $between: [parseFloat(req.query.lat), parseFloat(req.query.lat) + 3]
       },
       google_lng: {
-        $in: [parseFloat(req.query.lng), parseFloat(req.query.lng) + 3]
+        $between: [parseFloat(req.query.lng), parseFloat(req.query.lng) + 3]
       }
     }
   }).then(function (doctor, created) {
