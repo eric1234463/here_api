@@ -4,10 +4,10 @@ export default function doctorLocation(req, res, next) {
   models.Doctor.findAll({
     where: {
       google_lat: {
-        $in: [req.body.lat, req.body.lat + 3]
+        $in: [req.query.lat, req.query.lat + 3]
       },
       google_lng: {
-        $in: [req.body.lng, req.body.lng + 3]
+        $in: [req.query.lng, req.query.lng + 3]
       }
     }
   }).then((doctor, created) => {

@@ -4,6 +4,6 @@ import doctorLocation from "./doctorLocation";
 
 const doctorRouter = express.Router();
 doctorRouter.post("/login", doctorLogin);
-doctorRouter.post("/location", doctorLocation);
+doctorRouter.get("/location", doctorLocation);
 
 module.exports = doctorRouter;
