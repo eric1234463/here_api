@@ -9,6 +9,9 @@ module.exports = {
       queryInterface.addColumn("doctor", "telphone", Sequelize.STRING, {
         after: "photoURL"
       }),
+      queryInterface.addColumn("doctor", "gender", Sequelize.STRING, {
+        after: "photoURL"
+      }),
       queryInterface.addColumn("doctor", "age", Sequelize.STRING, {
         after: "photoURL"
       })
@@ -26,7 +29,8 @@ module.exports = {
     return [
       queryInterface.removeColumn("doctor", "telphone"),
       queryInterface.removeColumn("doctor", "about"),
-      queryInterface.removeColumn("doctor", "age")
+      queryInterface.removeColumn("doctor", "age"),
+      queryInterface.removeColumn("doctor", "gender")
     ];
   }
 };

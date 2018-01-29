@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       about: { type: DataTypes.STRING, allowNull: true },
       telphone: { type: DataTypes.STRING, allowNull: true },
       gender: { type: DataTypes.STRING, allowNull: true },
+      age: { type: DataTypes.STRING, allowNull: true },
       google_lat: { type: DataTypes.DECIMAL, allowNull: true },
       google_lng: { type: DataTypes.DECIMAL, allowNull: true }
     },
