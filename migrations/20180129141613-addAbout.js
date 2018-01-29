@@ -12,7 +12,7 @@ module.exports = {
       queryInterface.addColumn("doctor", "gender", Sequelize.STRING, {
         after: "photoURL"
       }),
-      queryInterface.addColumn("doctor", "age", Sequelize.STRING, {
+      queryInterface.addColumn("doctor", "age", Sequelize.INTEGER, {
         after: "photoURL"
       })
     ];
