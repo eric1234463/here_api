@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import http from "http";
 import SocketIO from "socket.io";
+import filestack from "filestack-js";
+
 let apiHandlers = require("./apis");
 let app = express();
 let server = http.Server(app);
@@ -87,4 +89,6 @@ io.on("connection", socket => {
 server.listen(port, function() {
   console.log("listening on *:" + port);
 });
-module.exports = { app: app, server: server };
+const apikey = "AauW5nIJWQqWKha5AHVUTz";
+const client = filestack.init(apikey);
+module.exports = { app: app, server: server, file: client };

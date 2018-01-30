@@ -20,6 +20,10 @@ var _socket = require("socket.io");
 
 var _socket2 = _interopRequireDefault(_socket);
 
+var _filestackJs = require("filestack-js");
+
+var _filestackJs2 = _interopRequireDefault(_filestackJs);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var apiHandlers = require("./apis");
@@ -100,5 +104,7 @@ io.on("connection", function (socket) {
 server.listen(port, function () {
   console.log("listening on *:" + port);
 });
-module.exports = { app: app, server: server };
+var apikey = "AauW5nIJWQqWKha5AHVUTz";
+var client = _filestackJs2.default.init(apikey);
+module.exports = { app: app, server: server, file: client };
 //# sourceMappingURL=app.js.map
