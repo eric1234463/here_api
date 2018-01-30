@@ -16,12 +16,17 @@ var _getDoctor = require("./getDoctor");
 
 var _getDoctor2 = _interopRequireDefault(_getDoctor);
 
+var _updateDoctor = require("./updateDoctor");
+
+var _updateDoctor2 = _interopRequireDefault(_updateDoctor);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var doctorRouter = _express2.default.Router();
 doctorRouter.post("/login", _doctorLogin2.default);
 doctorRouter.get("/location", _doctorLocation2.default);
 doctorRouter.get("/:id", _getDoctor2.default);
+doctorRouter.put("/:id", _updateDoctor2.default);
 
 module.exports = doctorRouter;
 //# sourceMappingURL=router.js.map
