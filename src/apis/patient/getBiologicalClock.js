@@ -54,12 +54,14 @@ export default function getBiologicalClock(req, res, next) {
                         wakeArray[index] = roundUpTime;
                     }   
                 });
+                let hourArray = [];
+                for (let i = 0; i < sleepArray.length; i++) {
+                    let sleepHour = Math.abs(sleepArray[i] - wakeArray[i]);
+                    hourArray.push(sleepArray);
+                }
                 const result = [{
-                    label: 'SLEEP',
-                    data: sleepArray
-                }, {
-                    label: 'WAKE',
-                    data: wakeArray
+                    label: 'SLEEP HOUR',
+                    data: hourArray
                 }];
                 res.json(result);
             });
