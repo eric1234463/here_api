@@ -57,7 +57,7 @@ export default function getBiologicalClock(req, res, next) {
                 let hourArray = [];
                 for (let i = 0; i < sleepArray.length; i++) {
                     let sleepHour = Math.abs(sleepArray[i] - wakeArray[i]);
-                    hourArray.push(sleepArray);
+                    hourArray.push(sleepHour);
                 }
                 const result = [{
                     label: 'SLEEP HOUR',
