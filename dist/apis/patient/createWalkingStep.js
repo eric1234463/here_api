@@ -25,13 +25,13 @@ function createWalkingStep(req, res, next) {
   }).then(function (obj) {
     if (obj) {
       // update
+      obj.update(value);
       res.json({
         status: "update"
       });
-      obj.update(values);
     } else {
       // insert
-      _models2.default.patientWalkingStep.create(values);
+      _models2.default.patientWalkingStep.create(value);
       res.json({
         status: "create"
       });

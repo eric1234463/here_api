@@ -16,13 +16,13 @@ export default function createWalkingStep(req, res, next) {
     .then(function(obj) {
       if (obj) {
         // update
+        obj.update(value);
         res.json({
           status: "update"
         });
-        obj.update(values);
       } else {
         // insert
-        models.patientWalkingStep.create(values);
+        models.patientWalkingStep.create(value);
         res.json({
           status: "create"
         });
