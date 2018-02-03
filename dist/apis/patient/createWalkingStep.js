@@ -25,10 +25,16 @@ function createWalkingStep(req, res, next) {
   }).then(function (obj) {
     if (obj) {
       // update
-      return obj.update(values);
+      res.json({
+        status: "update"
+      });
+      obj.update(values);
     } else {
       // insert
-      return Model.create(values);
+      _models2.default.patientWalkingStep.create(values);
+      res.json({
+        status: "create"
+      });
     }
   });
 }
