@@ -24,7 +24,7 @@ function updateProfile(req, res, next) {
         plain: true,
         returning: true
     }).then(function (model) {
-        res.json(model);
+        res.json(model[1]);
     });
 }
 //# sourceMappingURL=updateProfile.js.map

@@ -14,6 +14,6 @@ export default function updateProfile(req, res, next) {
             plain: true,
             returning: true
         }).then(model => {
-            res.json(model);
+            res.json(model[1]);
         })
 }
