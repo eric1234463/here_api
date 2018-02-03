@@ -1,7 +1,7 @@
 import models from "../../../models";
 
 export default function createWalkingStep(req, res, next) {
-  models.patientBiologicalClock
+  models.patientWalkingStep
     .findOrCreate({
       defaults: {
         value: req.body.step

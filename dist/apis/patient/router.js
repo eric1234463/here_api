@@ -31,7 +31,7 @@ var patientRouter = _express2.default.Router();
 patientRouter.put("/", _updateProfile2.default);
 patientRouter.post("/login", _patientLogin2.default);
 patientRouter.post("/biologicalClock", _createBiologicalClock2.default);
-patientRouter.post("/WalkingStep", _createWalkingStep2.default);
+patientRouter.post("/walkingStep", _createWalkingStep2.default);
 patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
 
 module.exports = patientRouter;
