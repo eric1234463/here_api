@@ -10,7 +10,9 @@ export default function updateProfile(req, res, next) {
         }, {
             where: {
                 id: req.body.patientId
-            }
+            },
+            plain: true,
+            returning: true
         }).then(model => {
             res.json(model);
         })
