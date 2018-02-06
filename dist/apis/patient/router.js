@@ -24,6 +24,10 @@ var _createWalkingStep = require("./createWalkingStep");
 
 var _createWalkingStep2 = _interopRequireDefault(_createWalkingStep);
 
+var _getWalkingStep = require("./getWalkingStep");
+
+var _getWalkingStep2 = _interopRequireDefault(_getWalkingStep);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var patientRouter = _express2.default.Router();
@@ -32,6 +36,7 @@ patientRouter.put("/", _updateProfile2.default);
 patientRouter.post("/login", _patientLogin2.default);
 patientRouter.post("/biologicalClock", _createBiologicalClock2.default);
 patientRouter.post("/walkingStep", _createWalkingStep2.default);
+patientRouter.get("/walkingStep", _getWalkingStep2.default);
 patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
 
 module.exports = patientRouter;
