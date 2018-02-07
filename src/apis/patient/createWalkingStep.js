@@ -4,7 +4,8 @@ export default function createWalkingStep(req, res, next) {
   let value = {
     patientId: req.body.patientId,
     date: req.body.date,
-    value: req.body.step
+    value: req.body.step,
+    distance: req.body.distance
   };
   models.patientWalkingStep
     .findOne({

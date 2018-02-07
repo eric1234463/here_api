@@ -15,7 +15,8 @@ function createWalkingStep(req, res, next) {
   var value = {
     patientId: req.body.patientId,
     date: req.body.date,
-    value: req.body.step
+    value: req.body.step,
+    distance: req.body.distance
   };
   _models2.default.patientWalkingStep.findOne({
     where: {

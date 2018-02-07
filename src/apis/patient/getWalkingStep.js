@@ -5,7 +5,8 @@ export default function getWalkingStep(req, res, next) {
     .findAll({
       where: {
         patientId: req.query.patientId,
-      }
+      },
+      order: [['createdAt', 'DESC']]
     })
     .then(function(obj) {
       res.json(obj);
