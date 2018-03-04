@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       displayName: { type: DataTypes.STRING, allowNull: true },
       photoURL: { type: DataTypes.STRING, allowNull: true },
       location: { type: DataTypes.STRING, allowNull: true },
+      district_id: { type: DataTypes.BIGINT, allowNull: true },
       about: { type: DataTypes.STRING, allowNull: true },
       telphone: { type: DataTypes.STRING, allowNull: true },
       gender: { type: DataTypes.STRING, allowNull: true },
@@ -20,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "doctor"
     }
   );
-  Doctor.associate = function(models) {};
+  Doctor.associate = function(models) {
+    Doctor.belongsTo(models.District, { foreignKey: "district_id" });
+  };
   return Doctor;
 };
