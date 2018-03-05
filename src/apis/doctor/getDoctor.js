@@ -5,7 +5,7 @@ export default function getDoctor(req, res, next) {
     where: {
       id: req.params.id
     },
-    include: [{ model: models.District }]
+    include: [{ model: models.District }, { model: models.Specialty }]
   }).then(user => {
     res.json(user);
   });

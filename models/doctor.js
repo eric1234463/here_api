@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       photoURL: { type: DataTypes.STRING, allowNull: true },
       location: { type: DataTypes.STRING, allowNull: true },
       district_id: { type: DataTypes.BIGINT, allowNull: true },
+      specialty_id: { type: DataTypes.BIGINT, allowNull: true },
       about: { type: DataTypes.STRING, allowNull: true },
       telphone: { type: DataTypes.STRING, allowNull: true },
       gender: { type: DataTypes.STRING, allowNull: true },
@@ -23,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Doctor.associate = function(models) {
     Doctor.belongsTo(models.District, { foreignKey: "district_id" });
+    Doctor.belongsTo(models.Specialty, { foreignKey: "specialty_id" })
   };
   return Doctor;
 };

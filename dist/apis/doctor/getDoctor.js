@@ -16,7 +16,7 @@ function getDoctor(req, res, next) {
     where: {
       id: req.params.id
     },
-    include: [{ model: _models2.default.District }]
+    include: [{ model: _models2.default.District }, { model: _models2.default.Specialty }]
   }).then(function (user) {
     res.json(user);
   });
