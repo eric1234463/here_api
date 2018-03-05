@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = createWalkingStep;
+exports.default = createHealthStatus;
 
 var _models = require("../../../models");
 
@@ -11,14 +11,15 @@ var _models2 = _interopRequireDefault(_models);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function createWalkingStep(req, res, next) {
+function createHealthStatus(req, res, next) {
   var value = {
     patientId: req.body.patientId,
     date: req.body.date,
-    value: req.body.step,
+    value: req.body.value,
+    step: req.body.step,
     distance: req.body.distance
   };
-  _models2.default.patientWalkingStep.findOne({
+  _models2.default.patientHealthStatus.findOne({
     where: {
       patientId: req.body.patientId,
       date: req.body.date
@@ -32,11 +33,11 @@ function createWalkingStep(req, res, next) {
       });
     } else {
       // insert
-      _models2.default.patientWalkingStep.create(value);
+      _models2.default.patientHealthStatus.create(value);
       res.json({
         status: "create"
       });
     }
   });
 }
-//# sourceMappingURL=createWalkingStep.js.map
+//# sourceMappingURL=createHealthStatus.js.map

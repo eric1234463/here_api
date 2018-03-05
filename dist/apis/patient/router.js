@@ -20,9 +20,9 @@ var _updateProfile = require("./updateProfile");
 
 var _updateProfile2 = _interopRequireDefault(_updateProfile);
 
-var _createWalkingStep = require("./createWalkingStep");
+var _createHealthStatus = require("./createHealthStatus");
 
-var _createWalkingStep2 = _interopRequireDefault(_createWalkingStep);
+var _createHealthStatus2 = _interopRequireDefault(_createHealthStatus);
 
 var _getWalkingStep = require("./getWalkingStep");
 
@@ -35,7 +35,7 @@ var patientRouter = _express2.default.Router();
 patientRouter.put("/", _updateProfile2.default);
 patientRouter.post("/login", _patientLogin2.default);
 patientRouter.post("/biologicalClock", _createBiologicalClock2.default);
-patientRouter.post("/walkingStep", _createWalkingStep2.default);
+patientRouter.post("/healthStatus", _createHealthStatus2.default);
 patientRouter.get("/walkingStep", _getWalkingStep2.default);
 patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
 
