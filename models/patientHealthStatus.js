@@ -1,13 +1,14 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  var patientWalkingStep = sequelize.define(
-    "patientWalkingStep",
+  var patientHealthStatus = sequelize.define(
+    "patientHealthStatus",
     {
       id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
       patientId: { type: DataTypes.BIGINT, allowNull: false },
       date: { type: DataTypes.DATEONLY, allowNull: false },
       value: { type: DataTypes.BIGINT, allowNull: false },
       distance: { type: DataTypes.BIGINT, allowNull: false },
+      step: { type: DataTypes.BIGINT, allowNull: false },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -18,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
-      tableName: "patient_walking_step"
+      tableName: "patient_health_status"
     }
   );
-  patientWalkingStep.associate = function(models) {};
-  return patientWalkingStep;
+  patientHealthStatus.associate = function(models) {};
+  return patientHealthStatus;
 };

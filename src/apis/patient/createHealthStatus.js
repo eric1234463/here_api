@@ -1,13 +1,14 @@
 import models from "../../../models";
 
-export default function createWalkingStep(req, res, next) {
+export default function createHealthStatus(req, res, next) {
   let value = {
     patientId: req.body.patientId,
     date: req.body.date,
-    value: req.body.step,
+    value: req.body.value,
+    step: req.body.step,
     distance: req.body.distance
   };
-  models.patientWalkingStep
+  models.patientHealthStatus
     .findOne({
       where: {
         patientId: req.body.patientId,
@@ -23,7 +24,7 @@ export default function createWalkingStep(req, res, next) {
         });
       } else {
         // insert
-        models.patientWalkingStep.create(value);
+        models.patientHealthStatus.create(value);
         res.json({
           status: "create"
         });

@@ -1,7 +1,7 @@
 import models from "../../../models";
 
 export default function getWalkingStep(req, res, next) {
-  models.patientWalkingStep
+  models.patientHealthStatus
     .findAll({
       where: {
         patientId: req.query.patientId,

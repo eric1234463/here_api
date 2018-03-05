@@ -3,7 +3,7 @@ import patientLogin from "./patientLogin";
 import createBiologicalClock from "./createBiologicalClock";
 import getBiologicalClock from "./getBiologicalClock";
 import updateProfile from "./updateProfile";
-import createWalkingStep from "./createWalkingStep";
+import createHealthStatus from "./createHealthStatus";
 import getWalkingStep from "./getWalkingStep";
 
 const patientRouter = express.Router();
@@ -11,7 +11,7 @@ const patientRouter = express.Router();
 patientRouter.put("/", updateProfile);
 patientRouter.post("/login", patientLogin);
 patientRouter.post("/biologicalClock", createBiologicalClock);
-patientRouter.post("/walkingStep", createWalkingStep);
+patientRouter.post("/healthStatus", createHealthStatus);
 patientRouter.get("/walkingStep", getWalkingStep);
 patientRouter.get("/biologicalClock", getBiologicalClock);
 
