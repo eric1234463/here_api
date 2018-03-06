@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     var Patient = sequelize.define(
         'Patient',
         {
-            id: { type: DataTypes.BIGINT, primaryKey: false, autoIncrement: true },
+            id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
             uid: { type: DataTypes.STRING, allowNull: false },
             displayName: { type: DataTypes.STRING(16), allowNull: false },
             email: { type: DataTypes.STRING, allowNull: false },
