@@ -1,7 +1,7 @@
 import models from "../../../models";
 
 export default function searchInsurancePlans(req, res, next) {
-  console.log(req);
+  console.log(req.body);
   let condtion = {
     order: [["id", "ASC"]]
   };
