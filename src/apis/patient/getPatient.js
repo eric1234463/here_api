@@ -4,7 +4,7 @@ export default function getPatient(req, res, next) {
   models.Patient
     .findOne({
       where: {
-        id: req.params.id,
+        id: req.params.id
       },
       order: [['createdAt', 'DESC']]
     })

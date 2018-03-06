@@ -36,9 +36,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var patientRouter = _express2.default.Router();
 
-patientRouter.get("/:id", _getPatient2.default);
 patientRouter.get("/walkingStep", _getWalkingStep2.default);
 patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
+patientRouter.get("/:id", _getPatient2.default);
 patientRouter.post("/login", _patientLogin2.default);
 patientRouter.post("/biologicalClock", _createBiologicalClock2.default);
 patientRouter.post("/healthStatus", _createHealthStatus2.default);

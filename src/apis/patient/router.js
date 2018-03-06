@@ -9,9 +9,9 @@ import getWalkingStep from "./getWalkingStep";
 
 const patientRouter = express.Router();
 
-patientRouter.get("/:id", getPatient);
 patientRouter.get("/walkingStep", getWalkingStep);
 patientRouter.get("/biologicalClock", getBiologicalClock);
+patientRouter.get("/:id", getPatient);
 patientRouter.post("/login", patientLogin);
 patientRouter.post("/biologicalClock", createBiologicalClock);
 patientRouter.post("/healthStatus", createHealthStatus);
