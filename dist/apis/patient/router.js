@@ -20,6 +20,10 @@ var _updateProfile = require("./updateProfile");
 
 var _updateProfile2 = _interopRequireDefault(_updateProfile);
 
+var _getPatient = require("./getPatient");
+
+var _getPatient2 = _interopRequireDefault(_getPatient);
+
 var _createHealthStatus = require("./createHealthStatus");
 
 var _createHealthStatus2 = _interopRequireDefault(_createHealthStatus);
@@ -32,12 +36,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var patientRouter = _express2.default.Router();
 
-patientRouter.put("/", _updateProfile2.default);
+patientRouter.get("/:id", _getPatient2.default);
+patientRouter.get("/walkingStep", _getWalkingStep2.default);
+patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
 patientRouter.post("/login", _patientLogin2.default);
 patientRouter.post("/biologicalClock", _createBiologicalClock2.default);
 patientRouter.post("/healthStatus", _createHealthStatus2.default);
-patientRouter.get("/walkingStep", _getWalkingStep2.default);
-patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
+patientRouter.put("/", _updateProfile2.default);
 
 module.exports = patientRouter;
 //# sourceMappingURL=router.js.map
