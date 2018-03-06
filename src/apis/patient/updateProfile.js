@@ -6,7 +6,6 @@ export default function updateProfile(req, res, next) {
             hkid: req.body.hkid,
             weight: req.body.weight,
             height: req.body.height,
-            gender: req.body.gender,
         }, {
             where: {
                 id: req.body.patientId

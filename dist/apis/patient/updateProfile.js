@@ -15,8 +15,7 @@ function updateProfile(req, res, next) {
     _models2.default.Patient.update({
         hkid: req.body.hkid,
         weight: req.body.weight,
-        height: req.body.height,
-        gender: req.body.gender
+        height: req.body.height
     }, {
         where: {
             id: req.body.patientId
