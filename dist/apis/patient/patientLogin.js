@@ -21,7 +21,9 @@ function patientLogin(req, res, next) {
             uid: req.body.uid,
             email: req.body.email,
             displayName: req.body.displayName,
-            photoURL: req.body.photoURL
+            photoURL: req.body.photoURL,
+            gender: req.body.gender,
+            age: req.body.age
         }
     }).spread(function (user, created) {
         res.json(user);
