@@ -12,6 +12,7 @@ var _models2 = _interopRequireDefault(_models);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function searchInsurancePlans(req, res, next) {
+  console.log(req);
   var condtion = {
     order: [["id", "ASC"]]
   };
