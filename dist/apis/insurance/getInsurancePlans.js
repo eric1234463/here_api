@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function getInsurancePlans(req, res, next) {
   _models2.default.InsurancePlan.findAll({
-    order: ["id", "ASC"]
+    order: [["id", "ASC"]]
   }).then(function (insurancePlans) {
     res.json(insurancePlans);
   });

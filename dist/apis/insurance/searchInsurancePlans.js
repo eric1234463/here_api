@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function searchInsurancePlans(req, res, next) {
   var condtion = {
-    order: ["id", "ASC"]
+    order: [["id", "ASC"]]
   };
 
   if (!req.body.search.provider) {
