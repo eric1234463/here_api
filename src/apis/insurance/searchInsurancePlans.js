@@ -2,7 +2,7 @@ import models from "../../../models";
 
 export default function searchInsurancePlans(req, res, next) {
   const condtion = {
-    order: ["id ASC"]
+    order: ["id", "ASC"]
   };
 
   if (!req.body.search.provider) {
