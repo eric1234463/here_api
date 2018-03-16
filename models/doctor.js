@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       gender: { type: DataTypes.STRING, allowNull: true },
       age: { type: DataTypes.INTEGER, allowNull: true },
       google_lat: { type: DataTypes.DECIMAL, allowNull: true },
-      google_lng: { type: DataTypes.DECIMAL, allowNull: true }
+      google_lng: { type: DataTypes.DECIMAL, allowNull: true },
+      open_time: { type: DataTypes.TIME, allowNull: true },
+      close_time: { type: DataTypes.TIME, allowNull: true }
     },
     {
       tableName: "doctor"
