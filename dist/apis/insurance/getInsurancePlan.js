@@ -14,15 +14,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function getInsurancePlan(req, res, next) {
   _models2.default.InsurancePlan.findOne({
     where: {
-      id: req.params.id,
-      include: [{
-        model: _models2.default.InsurancePlanAdvantage,
-        include: [_models2.default.InsuranceAdvantage]
-      }, {
-        model: _models2.default.InsurancePlanDisadvantage,
-        include: [_models2.default.InsuranceDisadvantage]
-      }]
-    }
+      id: req.params.id
+    },
+    include: [{
+      model: _models2.default.InsurancePlanAdvantage,
+      include: [_models2.default.InsuranceAdvantage]
+    }, {
+      model: _models2.default.InsurancePlanDisadvantage,
+      include: [_models2.default.InsuranceDisadvantage]
+    }]
   }).then(function (insurancePlans) {
     res.json(insurancePlans);
   });
