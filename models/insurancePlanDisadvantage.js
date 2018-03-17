@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   InsurancePlanDisadvantage.associate = function(models) {
-    InsurancePlanAdvantage.belongsTo(models.InsuranceDisadvantage, { foreignKey: "insurance_disadvantage_id" });
+    InsurancePlanDisadvantage.belongsTo(models.InsuranceDisadvantage, { foreignKey: "insurance_disadvantage_id" });
   };
   return InsurancePlanDisadvantage;
 };
