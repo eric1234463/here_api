@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
             tableName: 'insurance_plan'
         }
     );
-    InsurancePlan.associate = function (models) { };
+    InsurancePlan.associate = function (models) { 
+        InsurancePlan.hasMany(models.InsurancePlanAdvantage, { foreignKey: "insurance_plan_id" });
+        InsurancePlan.hasMany(models.InsurancePlanDisadvantage, { foreignKey: "insurance_plan_id" })
+    };
     return InsurancePlan;
 };
