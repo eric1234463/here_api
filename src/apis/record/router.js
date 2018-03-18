@@ -6,9 +6,9 @@ import getScanRecord from './getScanRecord';
 import createScanRecord from './createScanRecord';
 
 const recordRouter = express.Router();
+recordRouter.get('/scan', getScanRecord);
 recordRouter.get('/', getRecords);
 recordRouter.get('/:id', getRecord);
-recordRouter.get('/scan', getScanRecord);
 recordRouter.post('/', createRecord);
 recordRouter.post('/scan', createScanRecord);
 
