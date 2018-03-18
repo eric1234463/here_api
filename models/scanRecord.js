@@ -23,5 +23,5 @@ module.exports = (sequelize, DataTypes) => {
     ScanRecord.belongsTo(models.Doctor, {foreignKey: 'doctorId'});
     ScanRecord.belongsTo(models.Patient, {foreignKey: 'patientId'});
   };
-  return Record;
+  return ScanRecord;
 };
