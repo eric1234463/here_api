@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
           references: { model: 'patient', key: 'id' }
         },
         description: { type: DataTypes.STRING(16), allowNull: true },
-        rate : { type: DataTypes.STRING(16), allowNull: true },
     },
     {
       tableName: 'record'

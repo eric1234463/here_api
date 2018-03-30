@@ -20,7 +20,7 @@ function createNotification(req, res, next) {
     baseURL: "https://fcm.googleapis.com",
     timeout: 1000,
     headers: {
-      Authorization: "key=AIzaSyAhoKi1iAoKNwwFszwXGSX3lCk3d0FAguA",
+      "Authorization": "key=AIzaSyAhoKi1iAoKNwwFszwXGSX3lCk3d0FAguA",
       "Content-Type": "application/json"
     }
   }).post("/fcm/send", {
