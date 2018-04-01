@@ -8,6 +8,7 @@ import insuranceRouter from './insurance/router';
 import notificationRouter from './notification/router';
 import factorRouter from './factor/router';
 import medicineRouter from './medicine/router';
+import bookingRouter from './booking/router';
 
 const router = express.Router();
 router.use('/patient', patientRouter);
@@ -19,5 +20,6 @@ router.use('/insurance', insuranceRouter);
 router.use('/notification', notificationRouter);
 router.use('/factor', factorRouter);
 router.use('/medicine', medicineRouter);
+router.use('/booking', bookingRouter);
 
 module.exports = router;
