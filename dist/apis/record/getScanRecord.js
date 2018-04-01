@@ -16,6 +16,8 @@ function getScanRecords(req, res, next) {
     where: {
       patientId: req.query.patientId
     },
+    limit: 3,
+    order: [["createAt", "DESC"]],
     include: [{
       model: _models2.default.Doctor
     }, {
