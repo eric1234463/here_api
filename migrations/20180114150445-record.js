@@ -14,8 +14,8 @@ module.exports = {
         allowNull: false,
         references: { model: 'patient', key: 'id' }
       },
-      description: { type: Sequelize.STRING(16), allowNull: true },
-      rate : { type: Sequelize.STRING(16), allowNull: true },
+      title: { type: Sequelize.STRING(255), allowNull: true },
+      description: { type: Sequelize.STRING(255), allowNull: true },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
