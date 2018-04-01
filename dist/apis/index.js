@@ -32,6 +32,14 @@ var _router13 = require('./notification/router');
 
 var _router14 = _interopRequireDefault(_router13);
 
+var _router15 = require('./factor/router');
+
+var _router16 = _interopRequireDefault(_router15);
+
+var _router17 = require('./medicine/router');
+
+var _router18 = _interopRequireDefault(_router17);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
@@ -42,6 +50,8 @@ router.use('/feed', _router8.default);
 router.use('/disease', _router10.default);
 router.use('/insurance', _router12.default);
 router.use('/notification', _router14.default);
+router.use('/factor', _router16.default);
+router.use('/medicine', _router18.default);
 
 module.exports = router;
 //# sourceMappingURL=index.js.map
