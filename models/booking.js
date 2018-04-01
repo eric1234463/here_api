@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       doctorId: { type: DataTypes.BIGINT, allowNull: false },
       patientId: { type: DataTypes.BIGINT, allowNull: false },
       date: { type: DataTypes.DATEONLY, allowNull: false },
-      time: { type: DataTypes.TIMEONLY, allowNull: false },
+      time: { type: DataTypes.TIME, allowNull: false },
       status: { type: DataTypes.CHAR(1), allowNull: false }
     },
     {

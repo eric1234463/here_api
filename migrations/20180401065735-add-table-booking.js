@@ -6,7 +6,7 @@ module.exports = {
       id: { type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true },
       doctorId: { type: Sequelize.BIGINT,  allowNull: false},
       patientId: { type: Sequelize.BIGINT, allowNull: false },
-      time: { type: Sequelize.TIMEONLY, allowNull: false },
+      time: { type: Sequelize.TIME, allowNull: false },
       date: { type: Sequelize.DATEONLY, allowNull: false },
       status: { type: Sequelize.CHAR(1), allowNull: false },
       createdAt: {
