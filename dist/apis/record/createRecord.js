@@ -4,19 +4,25 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
 var _models = require('../../../models');
 
 var _models2 = _interopRequireDefault(_models);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 exports.default = function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res, next) {
+    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
         var colorClass, recordPayload, record, index, randomClass, _index, _randomClass;
 
-        return regeneratorRuntime.wrap(function _callee$(_context) {
+        return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
@@ -37,7 +43,7 @@ exports.default = function () {
                             break;
                         }
 
-                        _context.t0 = regeneratorRuntime.keys(req.body.medicines);
+                        _context.t0 = _regenerator2.default.keys(req.body.medicines);
 
                     case 7:
                         if ((_context.t1 = _context.t0()).done) {
@@ -69,7 +75,7 @@ exports.default = function () {
                             break;
                         }
 
-                        _context.t2 = regeneratorRuntime.keys(req.body.factors);
+                        _context.t2 = _regenerator2.default.keys(req.body.factors);
 
                     case 18:
                         if ((_context.t3 = _context.t2()).done) {

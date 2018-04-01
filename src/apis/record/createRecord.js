@@ -1,6 +1,5 @@
 import models from '../../../models';
 
-
 export default async function createRecord(req, res, next) {
     const colorClass = [
         'mat-orange-500-bg',
