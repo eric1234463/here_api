@@ -9,6 +9,7 @@ export default async function getPatientBooking(req, res, next) {
     include: [
       { 
         model: models.Doctor,
+        include: [{ model: models.District }, { model: models.Specialty }]
       }
     ]
   });

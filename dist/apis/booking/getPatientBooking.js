@@ -33,7 +33,8 @@ exports.default = function () {
                 patientId: req.query.id
               },
               include: [{
-                model: _models2.default.Doctor
+                model: _models2.default.Doctor,
+                include: [{ model: _models2.default.District }, { model: _models2.default.Specialty }]
               }]
             });
 
