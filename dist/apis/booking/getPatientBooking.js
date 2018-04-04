@@ -31,7 +31,6 @@ exports.default = function () {
             return _models2.default.Booking.findAll({
               where: {
                 patientId: req.query.id,
-                status: _bookingEnum.status.Active,
                 date: {
                   $gte: req.query.date
                 }
