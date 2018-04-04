@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "booking"
     }
   );
-  Booking.associate = function(models) {};
+  Booking.associate = function(models) {
+    Booking.belongsTo(models.Doctor, { foreignKey: "doctorId" });
+    Booking.belongsTo(models.Patient, { foreignKey: "patientId" });
+  };
   return Booking;
 };
