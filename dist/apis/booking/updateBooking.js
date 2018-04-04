@@ -28,19 +28,20 @@ exports.default = function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _models2.default.Booking.findAll({
+            return _models2.default.Booking.update({
+              status: req.body.accept ? _bookingEnum.status.Active : _bookingEnum.status.Decline
+            }, {
               where: {
-                patientId: req.query.id
-              },
-              include: [{
-                model: _models2.default.Doctor
-              }]
+                id: req.body.id,
+                plain: true,
+                returning: true
+              }
             });
 
           case 2:
             booking = _context.sent;
 
-            res.json(booking);
+            res.json(booking[1]);
 
           case 4:
           case "end":
@@ -50,10 +51,10 @@ exports.default = function () {
     }, _callee, this);
   }));
 
-  function getPatientBooking(_x, _x2, _x3) {
+  function updateBooking(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
   }
 
-  return getPatientBooking;
+  return updateBooking;
 }();
-//# sourceMappingURL=getPatientBooking.js.map
+//# sourceMappingURL=updateBooking.js.map
