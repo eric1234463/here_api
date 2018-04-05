@@ -28,6 +28,10 @@ var _createHealthStatus = require("./createHealthStatus");
 
 var _createHealthStatus2 = _interopRequireDefault(_createHealthStatus);
 
+var _createPatientMedicine = require("./createPatientMedicine");
+
+var _createPatientMedicine2 = _interopRequireDefault(_createPatientMedicine);
+
 var _getWalkingStep = require("./getWalkingStep");
 
 var _getWalkingStep2 = _interopRequireDefault(_getWalkingStep);
@@ -40,6 +44,7 @@ patientRouter.get("/walkingStep", _getWalkingStep2.default);
 patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
 patientRouter.get("/:id", _getPatient2.default);
 patientRouter.post("/login", _patientLogin2.default);
+patientRouter.post("/medicine", _createPatientMedicine2.default);
 patientRouter.post("/biologicalClock", _createBiologicalClock2.default);
 patientRouter.post("/healthStatus", _createHealthStatus2.default);
 patientRouter.put("/", _updateProfile2.default);
