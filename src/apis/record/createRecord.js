@@ -11,6 +11,7 @@ export default async function createRecord(req, res, next) {
         'mat-indigo-500-bg'
     ];
     const recordPayload = {
+        title: req.body.record.title,
         description: req.body.record.description,
         doctorId: req.body.record.doctorId,
         patientId:  req.body.record.patientId

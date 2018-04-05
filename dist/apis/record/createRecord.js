@@ -28,6 +28,7 @@ exports.default = function () {
                     case 0:
                         colorClass = ['mat-orange-500-bg', 'mat-cyan-500-bg', 'mat-red-500-bg', 'mat-pink-500-bg', 'mat-purple-500-bg', 'mat-deep-purple-500-bg', 'mat-indigo-500-bg'];
                         recordPayload = {
+                            title: req.body.record.title,
                             description: req.body.record.description,
                             doctorId: req.body.record.doctorId,
                             patientId: req.body.record.patientId
