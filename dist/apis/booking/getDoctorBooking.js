@@ -30,7 +30,10 @@ exports.default = function () {
             _context.next = 2;
             return _models2.default.Booking.findAll({
               where: {
-                doctorId: req.query.id
+                doctorId: req.query.id,
+                date: {
+                  $gte: req.query.date
+                }
               },
               include: [{
                 model: _models2.default.Patient
