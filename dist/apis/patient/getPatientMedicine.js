@@ -20,22 +20,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
-    var patientMedicine;
+    var patientMedicines;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _models2.default.PatientMedicine.create({
-              patient_id: req.body.patientId,
-              medicine_id: req.body.medicineId
+            return _models2.default.PatientMedicine.findAll({
+              patient_id: req.params.id
             });
 
           case 2:
-            patientMedicine = _context.sent;
+            patientMedicines = _context.sent;
 
 
-            res.json(patientMedicine);
+            res.json(patientMedicines);
 
           case 4:
           case "end":
@@ -45,10 +44,10 @@ exports.default = function () {
     }, _callee, this);
   }));
 
-  function createPatientMedicine(_x, _x2, _x3) {
+  function getPatientMedicine(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
   }
 
-  return createPatientMedicine;
+  return getPatientMedicine;
 }();
-//# sourceMappingURL=createPatientMedicine.js.map
+//# sourceMappingURL=getPatientMedicine.js.map

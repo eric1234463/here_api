@@ -32,6 +32,10 @@ var _createPatientMedicine = require("./createPatientMedicine");
 
 var _createPatientMedicine2 = _interopRequireDefault(_createPatientMedicine);
 
+var _getPatientMedicine = require("./getPatientMedicine");
+
+var _getPatientMedicine2 = _interopRequireDefault(_getPatientMedicine);
+
 var _getWalkingStep = require("./getWalkingStep");
 
 var _getWalkingStep2 = _interopRequireDefault(_getWalkingStep);
@@ -42,6 +46,7 @@ var patientRouter = _express2.default.Router();
 
 patientRouter.get("/walkingStep", _getWalkingStep2.default);
 patientRouter.get("/biologicalClock", _getBiologicalClock2.default);
+patientRouter.get("/:id/medicine", _getPatientMedicine2.default);
 patientRouter.get("/:id", _getPatient2.default);
 patientRouter.post("/login", _patientLogin2.default);
 patientRouter.post("/medicine", _createPatientMedicine2.default);
