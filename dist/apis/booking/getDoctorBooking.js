@@ -31,7 +31,10 @@ exports.default = function () {
             return _models2.default.Booking.findAll({
               where: {
                 doctorId: req.query.id
-              }
+              },
+              include: [{
+                model: _models2.default.Patient
+              }]
             });
 
           case 2:
