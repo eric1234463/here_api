@@ -6,5 +6,23 @@ export default async function getMedicine(req, res, next) {
       id: req.params.id
     }
   });
-  res.json(medicine);
+  let hasBan = false;
+  if (req.query.patientId) {
+    const patientMedicine = await models.PatientMedicine.findOne({
+      where: {
+        medicine_id: req.params.id,
+        patient_id: req.query.patientId
+      }
+    });
+
+    if (patientMedicine) {
+      hasBan = true;
+    }
+  }
+
+  const result = {
+    medicine,
+    hasBan
+  }
+  res.json(result);
 }

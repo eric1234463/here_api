@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
-    var medicine;
+    var medicine, hasBan, patientMedicine, result;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -34,10 +34,38 @@ exports.default = function () {
 
           case 2:
             medicine = _context.sent;
+            hasBan = false;
 
-            res.json(medicine);
+            if (!req.query.patientId) {
+              _context.next = 9;
+              break;
+            }
 
-          case 4:
+            _context.next = 7;
+            return _models2.default.PatientMedicine.findOne({
+              where: {
+                medicine_id: req.params.id,
+                patient_id: req.query.patientId
+              }
+            });
+
+          case 7:
+            patientMedicine = _context.sent;
+
+
+            if (patientMedicine) {
+              hasBan = true;
+            }
+
+          case 9:
+            result = {
+              medicine: medicine,
+              hasBan: hasBan
+            };
+
+            res.json(result);
+
+          case 11:
           case "end":
             return _context.stop();
         }
