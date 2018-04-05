@@ -1,7 +1,7 @@
 import express from 'express';
 import getMedicines from './getMedicines';
 import getMedicine from './getMedicine';
-import createMedicines from './createMedicine';
+import createMedicine from './createMedicine';
 
 const medicineRouter = express.Router();
 medicineRouter.get('/:id', getMedicine);

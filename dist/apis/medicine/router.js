@@ -25,7 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var medicineRouter = _express2.default.Router();
 medicineRouter.get('/:id', _getMedicine2.default);
 medicineRouter.get('/', _getMedicines2.default);
-medicineRouter.post('/', createMedicine);
+medicineRouter.post('/', _createMedicine2.default);
 
 exports.default = medicineRouter;
 //# sourceMappingURL=router.js.map
