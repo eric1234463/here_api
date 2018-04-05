@@ -27,7 +27,12 @@ exports.default = function () {
           case 0:
             _context.next = 2;
             return _models2.default.PatientMedicine.findAll({
-              patient_id: req.params.id
+              where: {
+                patient_id: req.params.id
+              },
+              include: [{
+                model: _models2.default.Medicine
+              }]
             });
 
           case 2:

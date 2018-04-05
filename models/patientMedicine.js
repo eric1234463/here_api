@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "patient_medicine"
     }
   );
-  PatientMedicine.associate = function(models) {};
+  PatientMedicine.associate = function(models) {
+    PatientMedicine.belongsTo(models.Medicine, {foreignKey: 'medicine_id'});
+    PatientMedicine.belongsTo(models.Patient, {foreignKey: 'patient_id'});
+  };
   return PatientMedicine;
 };
