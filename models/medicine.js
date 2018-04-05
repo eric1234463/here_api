@@ -4,7 +4,11 @@ module.exports = (sequelize, DataTypes) => {
         'Medicine',
         {
             id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
-            name: { type: DataTypes.STRING(255), allowNull: false },
+            name: { type: DataTypes.STRING(1000), allowNull: false },
+            permit: { type: DataTypes.STRING(1000), allowNull: false },
+            ingredients: { type: DataTypes.STRING(1000), allowNull: false },
+            company: { type: DataTypes.STRING(1000), allowNull: false },
+            address: { type: DataTypes.STRING(1000), allowNull: false },
         },
         {
             tableName: 'medicine'
