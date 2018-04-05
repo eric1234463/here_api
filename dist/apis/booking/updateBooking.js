@@ -32,9 +32,7 @@ exports.default = function () {
               status: req.body.accept ? _bookingEnum.status.Active : _bookingEnum.status.Decline
             }, {
               where: {
-                id: req.body.id,
-                plain: true,
-                returning: true
+                id: req.body.id
               }
             });
 

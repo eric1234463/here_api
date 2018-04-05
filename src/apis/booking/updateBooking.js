@@ -8,9 +8,7 @@ export default async function updateBooking(req, res, next) {
     },
     {
       where: {
-        id: req.body.id,
-        plain: true,
-        returning: true
+        id: req.body.id
       }
     }
   );
