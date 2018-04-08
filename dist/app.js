@@ -96,7 +96,7 @@ io.on("connection", function (socket) {
 
   socket.on("cancel connection", function (data) {
     console.log("cancel room connection", data);
-    socket.broadcast.to(data.room).emit("cancel connection", {
+    socket.broadcast.to(data.room).emit("cancel room connection", {
       patient: data.patient
     });
   });
