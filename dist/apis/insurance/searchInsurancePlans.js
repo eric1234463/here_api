@@ -1,22 +1,22 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('babel-runtime/regenerator');
+var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = require("babel-runtime/helpers/extends");
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _models = require('../../../models');
+var _models = require("../../../models");
 
 var _models2 = _interopRequireDefault(_models);
 
@@ -34,7 +34,7 @@ exports.default = function () {
               where: {
                 patientId: req.body.patientId
               },
-              order: [['createdAt', 'DESC']],
+              order: [["createdAt", "DESC"]],
               limit: 1
             });
 
@@ -47,19 +47,19 @@ exports.default = function () {
 
 
             if (!!req.body.search.provider) {
-              condtion['where']['provider'] = {
+              condtion["where"]["provider"] = {
                 $eq: req.body.search.provider
               };
             }
 
             if (!!req.body.search.surgery_cover) {
-              condtion['where']['surgery_cover'] = {
+              condtion["where"]["surgery_cover"] = {
                 $gte: req.body.search.surgery_cover
               };
             }
 
             if (!!req.body.search.daliy_cover) {
-              condtion['where']['daliy_cover'] = {
+              condtion["where"]["daliy_cover"] = {
                 $gte: req.body.search.daliy_cover
               };
             }
@@ -70,8 +70,8 @@ exports.default = function () {
           case 9:
             insurancePlans = _context.sent;
             result = insurancePlans.map(function (insurancePlan) {
-              var insuranceUserPlan = (0, _extends3.default)({}, insurancePlan, {
-                similarity: insurancePlan.dataValues.rank / userHealthStatus[0].dataValues.value
+              var insuranceUserPlan = (0, _extends3.default)({}, insurancePlan.dataValues, {
+                similarity: Math.ceil(userHealthStatus[0].dataValues.value / insurancePlan.dataValues.rank * 100)
               });
               return insuranceUserPlan;
             });
@@ -80,7 +80,7 @@ exports.default = function () {
             res.json(result);
 
           case 12:
-          case 'end':
+          case "end":
             return _context.stop();
         }
       }

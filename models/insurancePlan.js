@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
         {
           id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
           name: { type: DataTypes.STRING, allowNull: false },
+          rank: { type: DataTypes.BIGINT, allowNull: false },
           daliy_cover: { type: DataTypes.BIGINT, allowNull: false },
           surgery_cover: { type: DataTypes.BIGINT, allowNull: false },
           provider: { type: DataTypes.STRING, allowNull: false },
