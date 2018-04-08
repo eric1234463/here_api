@@ -7,6 +7,7 @@ import getPatient from "./getPatient";
 import createHealthStatus from "./createHealthStatus";
 import createPatientMedicine from "./createPatientMedicine";
 import getPatientMedicine from "./getPatientMedicine";
+import removePatientMedicine from "./removePatientMedicine";
 import getWalkingStep from "./getWalkingStep";
 
 const patientRouter = express.Router();
@@ -20,5 +21,7 @@ patientRouter.post("/medicine", createPatientMedicine);
 patientRouter.post("/biologicalClock", createBiologicalClock);
 patientRouter.post("/healthStatus", createHealthStatus);
 patientRouter.put("/", updateProfile);
+patientRouter.delete("/:id/medicine", removePatientMedicine);
+
 
 module.exports = patientRouter;

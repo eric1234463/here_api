@@ -36,6 +36,10 @@ var _getPatientMedicine = require("./getPatientMedicine");
 
 var _getPatientMedicine2 = _interopRequireDefault(_getPatientMedicine);
 
+var _removePatientMedicine = require("./removePatientMedicine");
+
+var _removePatientMedicine2 = _interopRequireDefault(_removePatientMedicine);
+
 var _getWalkingStep = require("./getWalkingStep");
 
 var _getWalkingStep2 = _interopRequireDefault(_getWalkingStep);
@@ -53,6 +57,7 @@ patientRouter.post("/medicine", _createPatientMedicine2.default);
 patientRouter.post("/biologicalClock", _createBiologicalClock2.default);
 patientRouter.post("/healthStatus", _createHealthStatus2.default);
 patientRouter.put("/", _updateProfile2.default);
+patientRouter.delete("/:id/medicine", _removePatientMedicine2.default);
 
 module.exports = patientRouter;
 //# sourceMappingURL=router.js.map
