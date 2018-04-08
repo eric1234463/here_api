@@ -3,7 +3,7 @@ import models from "../../../models";
 export default async function getInsurancePlans(req, res, next) {
   const userHealthStatus = await models.patientHealthStatus.findAll({
     where: {
-      patientId: req.body.patientId,
+      patientId: req.query.patientId,
     },
     order: [ [ 'createdAt', 'DESC' ]],
     limit: 1,

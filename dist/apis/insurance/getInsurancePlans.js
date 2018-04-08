@@ -28,7 +28,7 @@ exports.default = function () {
             _context.next = 2;
             return _models2.default.patientHealthStatus.findAll({
               where: {
-                patientId: req.body.patientId
+                patientId: req.query.patientId
               },
               order: [['createdAt', 'DESC']],
               limit: 1
