@@ -1,7 +1,14 @@
 import models from "../../../models";
 
-export default function searchInsurancePlans(req, res, next) {
-  console.log(req.body);
+export default async function searchInsurancePlans(req, res, next) {
+  const userHealthStatus = await models.patientHealthStatus.findAll({
+    where: {
+      patientId: req.body.patientId,
+    },
+    order: [ [ 'createdAt', 'DESC' ]],
+    limit: 1,
+  });
+  
   let condtion = {
     order: [["id", "ASC"]],
     where:{}
@@ -24,8 +31,13 @@ export default function searchInsurancePlans(req, res, next) {
       $gte: req.body.search.daliy_cover
     };
   }
-  console.log(condtion);
-  models.InsurancePlan.findAll(condtion).then(insurancePlans => {
-    res.json(insurancePlans);
-  });
+
+  const insurancePlans = await models.InsurancePlan.findAll(condtion);
+
+  const result = insurancePlans.map(insurancePlan => {
+    insurancePlan.similarity  = insurancePlan.dataValues.rank / userHealthStatus[0].dataValues.value;
+    return insurancePlan;
+  })
+
+  res.json(result);
 }
