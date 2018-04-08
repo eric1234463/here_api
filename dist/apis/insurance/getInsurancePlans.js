@@ -24,7 +24,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
-    var userHealthStatus, insurancePlans, result;
+    var userHealthStatus, userTotalHealthRank, userAvgHealthRank, insurancePlans, result, sortedResult;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -34,30 +34,37 @@ exports.default = function () {
               where: {
                 patientId: req.query.patientId
               },
-              order: [["createdAt", "DESC"]],
-              limit: 1
+              order: [["createdAt", "DESC"]]
             });
 
           case 2:
             userHealthStatus = _context.sent;
-            _context.next = 5;
+            userTotalHealthRank = userHealthStatus.reduce(function (acc, element) {
+              acc += parseInt(element.dataValues.value);
+              return acc;
+            }, 0);
+            userAvgHealthRank = userTotalHealthRank / userHealthStatus.length;
+            _context.next = 7;
             return _models2.default.InsurancePlan.findAll({
               order: [["rank", "DESC"], ["id", "ASC"]]
             });
 
-          case 5:
+          case 7:
             insurancePlans = _context.sent;
             result = insurancePlans.map(function (insurancePlan) {
               var insuranceUserPlan = (0, _extends3.default)({}, insurancePlan.dataValues, {
-                similarity: Math.ceil(userHealthStatus[0].dataValues.value / insurancePlan.dataValues.rank * 100)
+                similarity: Math.ceil(userAvgHealthRank / insurancePlan.dataValues.rank * 100)
               });
               return insuranceUserPlan;
             });
+            sortedResult = result.sort(function (a, b) {
+              return b.similarity - a.similarity;
+            });
 
 
-            res.json(result);
+            res.json(sortedResult);
 
-          case 8:
+          case 11:
           case "end":
             return _context.stop();
         }

@@ -24,7 +24,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
-    var userHealthStatus, condtion, insurancePlans, result;
+    var userHealthStatus, userTotalHealthRank, userAvgHealthRank, condition, insurancePlans, result, sortedResult;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -32,54 +32,61 @@ exports.default = function () {
             _context.next = 2;
             return _models2.default.patientHealthStatus.findAll({
               where: {
-                patientId: req.body.patientId
+                patientId: req.query.patientId
               },
-              order: [["createdAt", "DESC"]],
-              limit: 1
+              order: [["createdAt", "DESC"]]
             });
 
           case 2:
             userHealthStatus = _context.sent;
-            condtion = {
+            userTotalHealthRank = userHealthStatus.reduce(function (acc, element) {
+              acc += parseInt(element.dataValues.value);
+              return acc;
+            }, 0);
+            userAvgHealthRank = userTotalHealthRank / userHealthStatus.length;
+            condition = {
               order: [["id", "ASC"]],
               where: {}
             };
 
 
             if (!!req.body.search.provider) {
-              condtion["where"]["provider"] = {
+              condition["where"]["provider"] = {
                 $eq: req.body.search.provider
               };
             }
 
             if (!!req.body.search.surgery_cover) {
-              condtion["where"]["surgery_cover"] = {
+              condition["where"]["surgery_cover"] = {
                 $gte: req.body.search.surgery_cover
               };
             }
 
             if (!!req.body.search.daliy_cover) {
-              condtion["where"]["daliy_cover"] = {
+              condition["where"]["daliy_cover"] = {
                 $gte: req.body.search.daliy_cover
               };
             }
 
-            _context.next = 9;
-            return _models2.default.InsurancePlan.findAll(condtion);
+            _context.next = 11;
+            return _models2.default.InsurancePlan.findAll(condition);
 
-          case 9:
+          case 11:
             insurancePlans = _context.sent;
             result = insurancePlans.map(function (insurancePlan) {
               var insuranceUserPlan = (0, _extends3.default)({}, insurancePlan.dataValues, {
-                similarity: Math.ceil(userHealthStatus[0].dataValues.value / insurancePlan.dataValues.rank * 100)
+                similarity: Math.ceil(userAvgHealthRank / insurancePlan.dataValues.rank * 100)
               });
               return insuranceUserPlan;
             });
+            sortedResult = result.sort(function (a, b) {
+              return b.similarity - a.similarity;
+            });
 
 
-            res.json(result);
+            res.json(sortedResult);
 
-          case 12:
+          case 15:
           case "end":
             return _context.stop();
         }
