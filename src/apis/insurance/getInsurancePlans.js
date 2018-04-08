@@ -14,9 +14,12 @@ export default async function getInsurancePlans(req, res, next) {
   });
   
   const result = insurancePlans.map(insurancePlan => {
-    insurancePlan.similarity  = insurancePlan.dataValues.rank / userHealthStatus[0].dataValues.value;
-    return insurancePlan;
-  })
+    const insuranceUserPlan = {
+      ...insurancePlan,
+      similarity: insurancePlan.dataValues.rank / userHealthStatus[0].dataValues.value
+    }
+    return insuranceUserPlan;
+  });
 
   res.json(result);
 }

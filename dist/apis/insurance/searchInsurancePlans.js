@@ -8,6 +8,10 @@ var _regenerator = require('babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
@@ -66,8 +70,10 @@ exports.default = function () {
           case 9:
             insurancePlans = _context.sent;
             result = insurancePlans.map(function (insurancePlan) {
-              insurancePlan.similarity = insurancePlan.dataValues.rank / userHealthStatus[0].dataValues.value;
-              return insurancePlan;
+              var insuranceUserPlan = (0, _extends3.default)({}, insurancePlan, {
+                similarity: insurancePlan.dataValues.rank / userHealthStatus[0].dataValues.value
+              });
+              return insuranceUserPlan;
             });
 
 
