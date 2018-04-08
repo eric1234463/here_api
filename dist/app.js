@@ -93,9 +93,10 @@ io.on("connection", function (socket) {
       patient: data.patient
     });
   });
+
   socket.on("cancel connection", function (data) {
-    console.log("cancel connection", data);
-    socket.broadcast.to(data.room).emit("cancel doctor", {
+    console.log("cancel room connection", data);
+    socket.broadcast.to(data.room).emit("cancel connection", {
       patient: data.patient
     });
   });
