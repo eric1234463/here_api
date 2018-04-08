@@ -1,21 +1,10 @@
 import models from "../../../models";
+import getUserAvgHealthStatus from './getUserAvgHealthStatus';
 
 export default async function getInsurancePlans(req, res, next) {
-  const userHealthStatus = await models.patientHealthStatus.findAll({
-    where: {
-      patientId: req.query.patientId
-    },
-    order: [["createdAt", "DESC"]]
-  });
-
-  const userTotalHealthRank = userHealthStatus.reduce((acc, element) => {
-    acc += parseInt(element.dataValues.value);
-    return acc;
-  }, 0);
   
-  const userAvgHealthRank = userTotalHealthRank / userHealthStatus.length;
-
-
+  const userAvgHealthRank = await getUserAvgHealthStatus(req.query.patientId);
+  
   const insurancePlans = await models.InsurancePlan.findAll({
     order: [["rank", "DESC"], ["id", "ASC"]]
   });

@@ -1,7 +1,11 @@
 import models from "../../../models";
+import getUserAvgHealthStatus from './getUserAvgHealthStatus';
 
-export default function getInsurancePlan(req, res, next) {
-  models.InsurancePlan.findOne({
+export default async function getInsurancePlan(req, res, next) {
+
+  const userAvgHealthRank = await getUserAvgHealthStatus(req.query.patientId);
+
+  const insurancePlan = await models.InsurancePlan.findOne({
     where: {
       id: req.params.id
     },
@@ -15,7 +19,14 @@ export default function getInsurancePlan(req, res, next) {
         include: [models.InsuranceDisadvantage]
       }
     ]
-  }).then(insurancePlans => {
-    res.json(insurancePlans);
   });
+
+  res.json({
+    ...insurancePlan.dataValues,
+    similarity: Math.ceil(
+      userAvgHealthRank /
+        insurancePlan.dataValues.rank *
+        100
+    )
+  })
 }

@@ -20,30 +20,24 @@ var _models = require("../../../models");
 
 var _models2 = _interopRequireDefault(_models);
 
+var _getUserAvgHealthStatus = require("./getUserAvgHealthStatus");
+
+var _getUserAvgHealthStatus2 = _interopRequireDefault(_getUserAvgHealthStatus);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
-    var userHealthStatus, userTotalHealthRank, userAvgHealthRank, condition, insurancePlans, result, sortedResult;
+    var userAvgHealthRank, condition, insurancePlans, result, sortedResult;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _models2.default.patientHealthStatus.findAll({
-              where: {
-                patientId: req.query.patientId
-              },
-              order: [["createdAt", "DESC"]]
-            });
+            return (0, _getUserAvgHealthStatus2.default)(req.body.patientId);
 
           case 2:
-            userHealthStatus = _context.sent;
-            userTotalHealthRank = userHealthStatus.reduce(function (acc, element) {
-              acc += parseInt(element.dataValues.value);
-              return acc;
-            }, 0);
-            userAvgHealthRank = userTotalHealthRank / userHealthStatus.length;
+            userAvgHealthRank = _context.sent;
             condition = {
               order: [["id", "ASC"]],
               where: {}
@@ -68,10 +62,10 @@ exports.default = function () {
               };
             }
 
-            _context.next = 11;
+            _context.next = 9;
             return _models2.default.InsurancePlan.findAll(condition);
 
-          case 11:
+          case 9:
             insurancePlans = _context.sent;
             result = insurancePlans.map(function (insurancePlan) {
               var insuranceUserPlan = (0, _extends3.default)({}, insurancePlan.dataValues, {
@@ -86,7 +80,7 @@ exports.default = function () {
 
             res.json(sortedResult);
 
-          case 15:
+          case 13:
           case "end":
             return _context.stop();
         }
