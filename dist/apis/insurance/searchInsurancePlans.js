@@ -81,7 +81,7 @@ exports.default = function () {
             });
 
 
-            res.json(sortedResult);
+            res.json(result);
 
           case 15:
           case "end":

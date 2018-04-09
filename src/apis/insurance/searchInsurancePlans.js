@@ -46,5 +46,5 @@ export default async function searchInsurancePlans(req, res, next) {
     return insuranceUserPlan;
   });
 
-  res.json(sortedResult);
+  res.json(result);
 }
