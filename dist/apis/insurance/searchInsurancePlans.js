@@ -28,7 +28,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
-    var userAvgHealthRank, order, condition, insurancePlans, result, sortedResult;
+    var userAvgHealthRank, order, condition, insurancePlans, result;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -79,14 +79,11 @@ exports.default = function () {
               });
               return insuranceUserPlan;
             });
-            sortedResult = result.sort(function (a, b) {
-              return b.similarity - a.similarity;
-            });
 
 
             res.json(sortedResult);
 
-          case 16:
+          case 15:
           case "end":
             return _context.stop();
         }

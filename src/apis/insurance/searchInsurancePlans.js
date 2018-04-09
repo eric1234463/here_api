@@ -46,9 +46,5 @@ export default async function searchInsurancePlans(req, res, next) {
     return insuranceUserPlan;
   });
 
-  const sortedResult = result.sort((a, b) => {
-    return b.similarity - a.similarity;
-  });
-
   res.json(sortedResult);
 }
