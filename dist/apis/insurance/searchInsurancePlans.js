@@ -46,6 +46,7 @@ exports.default = function () {
 
 
             if (!!req.body.sort) {
+              condition.order = [];
               condition.order.push(req.body.sort);
             };
 
