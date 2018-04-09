@@ -44,6 +44,10 @@ var _router19 = require('./booking/router');
 
 var _router20 = _interopRequireDefault(_router19);
 
+var _router21 = require('./district/router');
+
+var _router22 = _interopRequireDefault(_router21);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
@@ -57,6 +61,7 @@ router.use('/notification', _router14.default);
 router.use('/factor', _router16.default);
 router.use('/medicine', _router18.default);
 router.use('/booking', _router20.default);
+router.use('/district', _router22.default);
 
 module.exports = router;
 //# sourceMappingURL=index.js.map
