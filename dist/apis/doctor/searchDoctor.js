@@ -25,6 +25,11 @@ function searchDoctor(req, res, next) {
     };
   }
 
+  if (!!req.body.sort) {
+    condition.order = [];
+    condition.order.push(req.body.sort);
+  }
+
   _models2.default.Doctor.findAll(condition).then(function (doctor) {
     res.json(doctor);
   });

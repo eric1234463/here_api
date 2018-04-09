@@ -14,6 +14,11 @@ export default function searchDoctor(req, res, next) {
     };
   }
 
+  if (!!req.body.sort) {
+    condition.order = [];
+    condition.order.push(req.body.sort);
+  }
+
   models.Doctor.findAll(condition).then(doctor => {
     res.json(doctor);
   });
