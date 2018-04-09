@@ -3,10 +3,14 @@ import getUserAvgHealthStatus from './getUserAvgHealthStatus';
 
 export default async function searchInsurancePlans(req, res, next) {
   const userAvgHealthRank = await getUserAvgHealthStatus(req.body.patientId);
-
+  let order = [["id", "ASC"]];
   let condition = {
-    order: [["id", "ASC"]],
+    order: order,
     where: {}
+  };
+  
+  if (!!req.body.sort) {
+    condition.order.push(req.body.sort);
   };
 
   if (!!req.body.search.provider) {

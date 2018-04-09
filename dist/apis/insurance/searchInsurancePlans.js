@@ -28,7 +28,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(req, res, next) {
-    var userAvgHealthRank, condition, insurancePlans, result, sortedResult;
+    var userAvgHealthRank, order, condition, insurancePlans, result, sortedResult;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -38,11 +38,16 @@ exports.default = function () {
 
           case 2:
             userAvgHealthRank = _context.sent;
+            order = [["id", "ASC"]];
             condition = {
-              order: [["id", "ASC"]],
+              order: order,
               where: {}
             };
 
+
+            if (!!req.body.sort) {
+              condition.order.push(req.body.sort);
+            };
 
             if (!!req.body.search.provider) {
               condition["where"]["provider"] = {
@@ -62,10 +67,10 @@ exports.default = function () {
               };
             }
 
-            _context.next = 9;
+            _context.next = 12;
             return _models2.default.InsurancePlan.findAll(condition);
 
-          case 9:
+          case 12:
             insurancePlans = _context.sent;
             result = insurancePlans.map(function (insurancePlan) {
               var insuranceUserPlan = (0, _extends3.default)({}, insurancePlan.dataValues, {
@@ -80,7 +85,7 @@ exports.default = function () {
 
             res.json(sortedResult);
 
-          case 13:
+          case 16:
           case "end":
             return _context.stop();
         }
