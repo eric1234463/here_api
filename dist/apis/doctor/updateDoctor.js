@@ -29,7 +29,7 @@ exports.default = function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + req.body.location + "&key=AIzaSyDWRykKh_AkmGvt8RzH_zkpdUhrWh4SJLc";
+            url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + req.body.location + "&key=AIzaSyDY9138TLI3CkoYw8Zz7YR5nOBE3qPlTtE";
             _context.next = 3;
             return _axios2.default.get(url);
 
@@ -38,9 +38,9 @@ exports.default = function () {
             google_lat = 0;
             google_lng = 0;
 
-            if (geocoding.results.length > 0) {
-              google_lat = geocoding.results[0].geometry.location.lat;
-              google_lng = geocoding.results[0].geometry.location.lng;
+            if (geocoding.data.results.length > 0) {
+              google_lat = geocoding.data.results[0].geometry.location.lat;
+              google_lng = geocoding.data.results[0].geometry.location.lng;
             }
             _models2.default.Doctor.update({
               displayName: req.body.displayName,
