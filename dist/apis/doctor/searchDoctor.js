@@ -15,7 +15,8 @@ function searchDoctor(req, res, next) {
   var order = [["id", "ASC"]];
   var condition = {
     order: order,
-    where: {}
+    where: {},
+    include: [{ model: _models2.default.District }, { model: _models2.default.Specialty }]
   };
 
   if (!!req.body.search.district_id) {

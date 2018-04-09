@@ -4,7 +4,8 @@ export default function searchDoctor(req, res, next) {
   let order = [["id", "ASC"]];
   let condition = {
     order: order,
-    where: {}
+    where: {},
+    include: [{ model: models.District }, { model: models.Specialty }]
   };
 
   if (!!req.body.search.district_id) {
